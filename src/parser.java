@@ -2,12 +2,13 @@ import java.io.*;
 import java.util.*;
 public class parser 
 {
-	private String all = "";
+	String all;
 	private String path;
 	private ArrayList<String> Story = new ArrayList<String>();
 	private ArrayList<String> Options = new ArrayList<String>();
 	public parser(String file) throws IOException
 	{
+		all="";
 		path = file;
 		readStuff();
 		parse();
@@ -33,8 +34,8 @@ public class parser
 	}
 	public void parse()
 	{
-		char sent;
-		while (all != "")
+		char sent = 'a';
+		while (!all.isEmpty())
 		{
 			sent = all.charAt(0);
 			int start = all.indexOf('<');
