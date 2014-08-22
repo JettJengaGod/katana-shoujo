@@ -6,12 +6,16 @@ public class parser
 	private String path;
 	private ArrayList<String> Story = new ArrayList<String>();
 	private ArrayList<String> Options = new ArrayList<String>();
-	public parser(String file)
+	public parser(String file) throws IOException
 	{
 		path = file;
+		readStuff();
+		parse();
 	}
-	public static void main(String[] args)
+	public void printShit()
 	{
+		System.out.println(Story);
+		System.out.println(Options);
 	}
 	public void readStuff() throws IOException 
 	{
