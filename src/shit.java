@@ -15,7 +15,7 @@ public class shit {
 	public static void progress() throws IOException
 	{
 		int index = 0;
-		String working = p.Story.get(0);
+		String working;
 		String tag;
 		String name;
 		String quote;
