@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class shit {
@@ -10,7 +12,7 @@ public class shit {
 		points = 0;
 		progress();
 	}
-	public static void progress()
+	public static void progress() throws IOException
 	{
 		int index = 0;
 		String working = p.Story.get(0);
@@ -36,7 +38,6 @@ public class shit {
 				quote = working.substring(working.indexOf(']')+1);
 				display(name,quote);
 			}
-			System.out.println(index);
 			index = next(tag,index);
 		}
 	}
@@ -53,14 +54,14 @@ public class shit {
 			working = working.substring(working.indexOf('>')+1);
 		}
 	}
-	public static int next(String tag,int index)
+	public static int next(String tag,int index) throws IOException
 	{
 		if(tag.startsWith("S"))
 			return index+1;
 		
 		return next(tag,index,1);
 	}
-	public static int next(String tag,int index, int choice)
+	public static int next(String tag,int index, int choice) throws IOException
 	{
 		if(tag.startsWith("C"))
 		{
@@ -68,14 +69,35 @@ public class shit {
 		}
 		else 
 		{
-			if(tag.charAt(1)=='-')
-			{
-				points -= 1;
-			}
-			else if(tag.charAt(1)=='1')
-			{
-				points += 1;
-			}
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	        System.out.println("Enter Choice: 1, 2 ,3"+ tag);
+	        try{
+	            int i = Integer.parseInt(br.readLine());
+	            switch(i){
+	            	case 1:
+	            	{
+	            		points += Integer.parseInt(tag.substring(1,tag.indexOf('P',1)));
+	            		break;
+	            	}
+	            	case 2:
+	            	{
+	            		points += Integer.parseInt(tag.substring(tag.indexOf('P',1),tag.indexOf('P',tag.indexOf('P',1))));
+	            		break;
+	            	}
+	            	case 3:
+	            	{
+	            		points += Integer.parseInt(tag.substring(tag.indexOf('P',tag.indexOf('P',tag.indexOf('P',1)))));
+	            		break;
+	            	}
+	            	default: points = 0;
+	            	break;
+	            }
+	            System.out.println(points);
+				
+	        }catch(NumberFormatException nfe){
+	            System.err.println("Invalid Format!");
+	        }
+	        
 			return lookFor("SP"+points,index);
 		}
 	}
@@ -90,12 +112,11 @@ public class shit {
 		return 100;
 	}
 	private static int lookFor(String string,int current) {
+		System.out.println(string);
 		for(int i = current; i <p.Story.size(); i++)
 		{
-			System.out.println(p.Story.get(i));
 			if(p.Story.get(i).startsWith(string))
 			{
-				System.out.println("**");
 				return i;
 			}
 		}
