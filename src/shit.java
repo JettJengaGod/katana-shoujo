@@ -8,7 +8,7 @@ public class shit {
 	static int points;
 	public static void main(String [] args) throws IOException
 	{
-		p = new parser("shit.txt");
+		p = new parser("TestRoute.txt");
 		points = 0;
 		progress();
 	}
@@ -21,6 +21,11 @@ public class shit {
 		String quote;
 		while(index<p.Story.size()-1){
 			working = p.Story.get(index);
+			if(working.equals("ending"))
+			{
+				System.out.println("End");
+				return;
+			}
 			tag = working.substring(0,working.indexOf(']'));
 			if(working.contains(":"))
 			{
@@ -69,8 +74,10 @@ public class shit {
 		}
 		else 
 		{
+			String c1 = tag.substring(1);
+			String c2 = c1.substring(c1.indexOf('P')+1);
+			String c3 = c2.substring(c2.indexOf('P')+1);
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	        System.out.println("Enter Choice: 1, 2 ,3"+ tag);
 	        try{
 	            int i = Integer.parseInt(br.readLine());
 	            switch(i){
@@ -81,18 +88,17 @@ public class shit {
 	            	}
 	            	case 2:
 	            	{
-	            		points += Integer.parseInt(tag.substring(tag.indexOf('P',1),tag.indexOf('P',tag.indexOf('P',1))));
+	            		points += Integer.parseInt(c2.substring(0,c2.indexOf('P')));
 	            		break;
 	            	}
 	            	case 3:
 	            	{
-	            		points += Integer.parseInt(tag.substring(tag.indexOf('P',tag.indexOf('P',tag.indexOf('P',1)))));
+	            		points += Integer.parseInt(c3);
 	            		break;
 	            	}
 	            	default: points = 0;
 	            	break;
 	            }
-	            System.out.println(points);
 				
 	        }catch(NumberFormatException nfe){
 	            System.err.println("Invalid Format!");
@@ -112,7 +118,6 @@ public class shit {
 		return 100;
 	}
 	private static int lookFor(String string,int current) {
-		System.out.println(string);
 		for(int i = current; i <p.Story.size(); i++)
 		{
 			if(p.Story.get(i).startsWith(string))

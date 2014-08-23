@@ -7,10 +7,13 @@ SP0B0C0<Nidalee:I'm sorry, I did not mean anything by it>
 SP0B0C1<Alistar:It is ok, I am used to it by now? so what's up?>
 OP-1P0P1<I just wanted to make babbys>
 <To get down and dirty, you hairy mongrel>
-<I just wanted to spend time with you>
+<I just wanted to spend time with you>*
 SP1B0C1<Alistar: Aw, thank you>
 SP1B0C1<Alistar: Why dont we go someplace special>
+E
 SP0B0C1<Alistar: I don't understand, speak english bitch>
+E
 SP-1B0C1<Alistar: Fuck off, pig>
 SP-1B0C1<Alistar: Why do girls only think of my tits!>
 SP-1B0C1<Alistar: You can't milk those!>
+E

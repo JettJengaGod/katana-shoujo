@@ -72,6 +72,11 @@ public class parser
 				if (all.length()>2)
 				return(a);
 			}
+			if(sent == 'E')
+			{
+				all = all.substring(1);
+				return("ending");
+			}
 			
 		}
 		done = true;
