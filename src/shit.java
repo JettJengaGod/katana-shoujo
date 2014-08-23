@@ -8,6 +8,7 @@ public class shit {
 	{
 		p = new parser("shit.txt");
 		points = 0;
+		progress();
 	}
 	public static void progress()
 	{
@@ -16,7 +17,8 @@ public class shit {
 		String tag;
 		String name;
 		String quote;
-		while(index<p.Story.size()){
+		while(index<p.Story.size()-1){
+			working = p.Story.get(index);
 			tag = working.substring(0,working.indexOf(']'));
 			if(working.contains(":"))
 			{
@@ -26,8 +28,7 @@ public class shit {
 			}
 			else if(working.contains(">"))
 			{
-				name = working.substring(working.indexOf(']')+1);
-				display(name);
+				display(working);
 			}
 			else
 			{
@@ -35,9 +36,8 @@ public class shit {
 				quote = working.substring(working.indexOf(']')+1);
 				display(name,quote);
 			}
-			
+			System.out.println(index);
 			index = next(tag,index);
-			working = p.Story.get(index);
 		}
 	}
 	public static void display(String name, String quote)
@@ -48,7 +48,8 @@ public class shit {
 	{
 		while(working.contains(">"))
 		{
-			System.out.println(working.substring(working.indexOf(0),working.indexOf('>')));
+			working = working.substring(working.indexOf(']')+1);
+			System.out.println(working.substring(0,working.indexOf('>')));
 			working = working.substring(working.indexOf('>')+1);
 		}
 	}
@@ -63,7 +64,7 @@ public class shit {
 	{
 		if(tag.startsWith("C"))
 		{
-			return lookFor("A"+index);
+			return lookFor("A"+choice)+1;
 		}
 		else 
 		{
@@ -75,27 +76,29 @@ public class shit {
 			{
 				points += 1;
 			}
-			return lookFor("P"+points,index);
+			return lookFor("SP"+points,index);
 		}
 	}
 	private static int lookFor(String string) {
-		for(String s : p.Story)
+		for(int i = 0; i <p.Story.size(); i++)
 		{
-			if(s.startsWith(string))
-			{
-				return p.Story.indexOf(s);
-			}
-		}
-		return 0;
-	}
-	private static int lookFor(String string,int current) {
-		for(int i = current; i <p.Story.size(); i++)
-		{
-			if(p.Story.get(i).startsWith(string))
+			if(p.Story.get(i).contains(string))
 			{
 				return i;
 			}
 		}
-		return 0;
+		return 100;
+	}
+	private static int lookFor(String string,int current) {
+		for(int i = current; i <p.Story.size(); i++)
+		{
+			System.out.println(p.Story.get(i));
+			if(p.Story.get(i).startsWith(string))
+			{
+				System.out.println("**");
+				return i;
+			}
+		}
+		return 100;
 	}
 }

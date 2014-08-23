@@ -27,6 +27,7 @@ public class parser
 		    	all += line;
 		    }
 		} finally {
+			
 		    br.close();
 		}
 	}
@@ -36,10 +37,12 @@ public class parser
 		if(!all.isEmpty())
 		{
 			sent = all.charAt(0);
-			int start = all.indexOf('<');
-			int end = all.indexOf('>');
+			int start = 0;
+			int end = 0;
 			if(sent == 'S')
 			{
+				start = all.indexOf('<');
+				end = all.indexOf('>');
 				String story = all.substring(0,start)+']'+all.substring(start+1, end);
 				all = all.substring(end+1);
 				return(story);
@@ -47,6 +50,8 @@ public class parser
 			}
 			if (sent == 'O')
 			{
+				start = all.indexOf('<');
+				end = all.indexOf('>');
 				String options = "";
 				options+=all.substring(1,start)+']'+all.substring(start+1, end+1);
 				all = all.substring(end+1);
@@ -59,6 +64,13 @@ public class parser
 				}
 				all = all.substring(1);
 				return options;
+			}
+			if(sent == 'A')
+			{
+				String a = all.substring(0,2);
+				all = all.substring(2);
+				if (all.length()>2)
+				return(a);
 			}
 			
 		}
