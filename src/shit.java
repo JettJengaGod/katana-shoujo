@@ -1,16 +1,55 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-
-public class shit {
+public class shit extends JFrame
+{
+	//Don't know why this needs to be here.
+	private static final long serialVersionUID = 1L;
+    //Create and set up the window.
+    static JFrame frame = new JFrame("Katana Shoujo");
+    
+	public static int SCREENWIDTH = 1280;
+	public static int SCREENHEIGHT = 720;
 	static parser p;
 	static int points;
 	public static void main(String [] args) throws IOException
 	{
 		p = new parser("TestRoute.txt");
 		points = 0;
+		run();
 		progress();
+		
+	}
+	private static void createFrame() 
+	{
+		
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JLabel emptyLabel = new JLabel("it's not like I waited for you, b-baka", JLabel.CENTER);
+        emptyLabel.setPreferredSize(new Dimension(SCREENWIDTH, SCREENHEIGHT));
+        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(false);      
+    }
+	public void paint(Graphics g)
+	{
+		Graphics2D scene = (Graphics2D)g;
+		//use scene to draw the background
+		
+		frame.paint(g);
+		
+		
+		
+		
+	}
+	public static void run()
+	{
+		createFrame();
 	}
 	public static void progress() throws IOException
 	{
