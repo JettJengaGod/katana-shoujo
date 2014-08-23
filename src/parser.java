@@ -4,19 +4,17 @@ public class parser
 {
 	String all;
 	private String path;
-	private ArrayList<String> Story = new ArrayList<String>();
-	private ArrayList<String> Options = new ArrayList<String>();
+	public ArrayList<String> Story = new ArrayList<String>();
+	public boolean done = false;
 	public parser(String file) throws IOException
 	{
 		all="";
 		path = file;
 		readStuff();
-		parse();
-	}
-	public void printShit()
-	{
-		System.out.println(Story);
-		System.out.println(Options);
+		while(done == false)
+		{
+			Story.add(parse());
+		}
 	}
 	public void readStuff() throws IOException 
 	{
@@ -32,24 +30,39 @@ public class parser
 		    br.close();
 		}
 	}
-	public void parse()
+	public String parse()
 	{
-		char sent = 'a';
-		while (!all.isEmpty())
+		char sent;
+		if(!all.isEmpty())
 		{
 			sent = all.charAt(0);
 			int start = all.indexOf('<');
 			int end = all.indexOf('>');
-			if(sent == 's')
+			if(sent == 'S')
 			{
-				Story.add(all.substring(1,start)+']'+all.substring(start+1, end));
-			}//Story is an ArrayList of all the strings that are not options. Each string begins with a tag saying where it is the tag ends with ']'
-			else if (sent == 'o')
+				String story = all.substring(0,start)+']'+all.substring(start+1, end);
+				all = all.substring(end+1);
+				return(story);
+				
+			}
+			if (sent == 'O')
 			{
-				Options.add(all.substring(1,start)+']'+all.substring(start+1, end));
-			}//Options is an ArrayList of all the strings that are options. Each string begins with a tag saying where it is the tag ends with ']'
-
-			all = all.substring(end+1);
+				String options = "";
+				options+=all.substring(0,start)+']'+all.substring(start+1, end);
+				all = all.substring(end+1);
+				while(all.charAt(0)!='*')
+				{					
+					start = all.indexOf('<');
+					end = all.indexOf('>');
+					options+=all.substring(1,start)+']'+all.substring(start+1, end);
+					all = all.substring(end+1);
+				}
+				all = all.substring(1);
+				return options;
+			}
+			
 		}
+		done = true;
+		return "";
 	}
 }
