@@ -48,13 +48,13 @@ public class parser
 			if (sent == 'O')
 			{
 				String options = "";
-				options+=all.substring(0,start)+']'+all.substring(start+1, end);
+				options+=all.substring(1,start)+']'+all.substring(start+1, end+1);
 				all = all.substring(end+1);
 				while(all.charAt(0)!='*')
 				{					
 					start = all.indexOf('<');
 					end = all.indexOf('>');
-					options+=all.substring(1,start)+']'+all.substring(start+1, end);
+					options+=all.substring(0,start)+']'+all.substring(start+1, end+1);
 					all = all.substring(end+1);
 				}
 				all = all.substring(1);
