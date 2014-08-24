@@ -1,4 +1,4 @@
-package audio;
+
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -12,10 +12,25 @@ public class AudioPlayer
 	private int frameNumber = 0;
 	private double volume = .5;
 		
-	public AudioPlayer(String s)
+	public AudioPlayer()
+	{
+		
+	}
+	
+	public boolean isActive()
+	{
+		if(clip == null)
+		{
+			return false;
+		}
+		return clip.isActive();
+	}
+	
+	public void play(String s)
 	{
 		try
 		{
+			s = "Resources/"+s+".mp3";
 			AudioInputStream ais = AudioSystem.getAudioInputStream(getClass().getResourceAsStream(s));
 		
 			AudioFormat baseFormat = ais.getFormat();
@@ -38,19 +53,6 @@ public class AudioPlayer
 		{
 			e.printStackTrace();
 		}
-	}
-	
-	public boolean isActive()
-	{
-		if(clip == null)
-		{
-			return false;
-		}
-		return clip.isActive();
-	}
-	
-	public void play()
-	{
 		if(clip == null)
 		{
 			return;

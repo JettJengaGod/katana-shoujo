@@ -22,7 +22,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	public  int SCREENWIDTH = 1280;// Screen width
 	public  int SCREENHEIGHT = 720;// Screen height
 	int index = 0; //Where we are in the story
-	AudioPlayer ap;
+	AudioPlayer ap;//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 	ArrayList<String> options = new ArrayList<String>(); //An array list of the current options. 
 	String working;//The text of the current line from the text. Still needs to be parsed into tag name and quote.
 	parser p; //The object that holds the story in an array list p.Story
@@ -35,7 +35,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote 
 	public void init()
 	{
-		ap = new AudioPlayer();
+		ap = new AudioPlayer();//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 		options.add("");
 		options.add("");
 		options.add("");//These 3 lines are to populate options.
@@ -68,27 +68,27 @@ public class shit extends JApplet implements KeyListener, MouseListener
 			g.setFont(n); //Sets the name font
 			scene.drawString(nameC,53,430); //Draws the current name
 			g.setFont(q);//sets the quote font 
-			if(!quoteC.contains("$"))
+			if(!quoteC.contains("$")) //No line breaks
 			{
-				scene.drawString(quoteC, 40, 520);//Draws the current qote font
+				scene.drawString(quoteC, 40, 520); //Draw the quote
 			}
 			else
 			{
-				scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520);
-				quoteC = quoteC.substring(quoteC.indexOf('$')+1);
-				int i = 1;
-				while(quoteC.contains("$"))
+				scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520); //draw the first line
+				quoteC = quoteC.substring(quoteC.indexOf('$')+1);//erase the first line
+				int i = 1;//how many lines
+				while(quoteC.contains("$")) //if there are more lines
 				{
-					scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520+50*i);
-					quoteC = quoteC.substring(quoteC.indexOf('$')+1);
+					scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520+50*i);//draw next line
+					quoteC = quoteC.substring(quoteC.indexOf('$')+1);//get rid of that line
 					i++;
 				}
-				scene.drawString(quoteC, 40, 520+50*i);
+				scene.drawString(quoteC, 40, 520+50*i);//draw last line
 			}
 		}
 		else if(state == 2)//Draws the options
 		{
-			scene.drawImage(obox, 0, 0, null);
+			scene.drawImage(obox, 0, 0, null);//options thing
 			scene.drawString(options.get(0), 220, 180);
 			scene.drawString(options.get(1), 220, 358);
 			scene.drawString(options.get(2), 220, 527);
@@ -103,26 +103,28 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	public void drawTag(Graphics g)
 	{
 		try {
-			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+1);
-			bg = ImageIO.read(new File(b+".png"));
-			g.drawImage(bg,0,0,null);
-			if(tag.contains("T"))
+			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+1);//gets the file name of the background file
+			bg = ImageIO.read(new File(b+".png"));//reads in the background file
+			g.drawImage(bg,0,0,null);//draws the background image
+			if(tag.contains("T"))//Two chars?
 			{
-				int ch1x = 200,ch1y = 200,ch2x = 600,ch2y = 200;
-				tag = tag.substring(tag.indexOf("T"));
-				String ch1 = tag.substring(0, 2);
-				c1 = ImageIO.read(new File(ch1+".png"));
-				String ch2 = tag.substring(2, 5);
-				c2 = ImageIO.read(new File(ch2+".png"));
-				g.drawImage(c1,ch1x,ch1y,null);
-				g.drawImage(c2,ch2x,ch2y,null);
+				//CHANGE THIS LINE 
+				int ch1x = 200,ch1y = 200,ch2x = 600,ch2y = 200; //Where they are idk how big they are and where they should go
+				tag = tag.substring(tag.indexOf("T"));//gets the rest of the string after the tag of where they are
+				String ch1 = tag.substring(0, 2);//gets the name of the first character file
+				c1 = ImageIO.read(new File(ch1+".png"));//reads in the first character image
+				String ch2 = tag.substring(2, 5);//second char file
+				c2 = ImageIO.read(new File(ch2+".png"));//reads in
+				g.drawImage(c1,ch1x,ch1y,null);//draws c1
+				g.drawImage(c2,ch2x,ch2y,null);//draws c2
 			}
-			else
+			else//only one char
 			{
-				int cx = 400, cy = 200;
-				String ch = tag.substring(tag.indexOf('C'));
-				c = ImageIO.read(new File(ch+".png"));
-				g.drawImage(c,cx,cy,null);
+				//CHANGE THIS LINE
+				int cx = 400, cy = 200;// location of the char 
+				String ch = tag.substring(tag.indexOf('C'));//gets name of char
+				c = ImageIO.read(new File(ch+".png"));//reads in
+				g.drawImage(c,cx,cy,null);//draws c
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -131,7 +133,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	}
 	public  void progress() //Function that goes to the next step in the story
 	{
-//		ap.play("/Resources/Music/Scrollsound.mp3");
+//		ap.play("/Resources/Music/Scrollsound.mp3"); //THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 		String name; //Name of the char 
 		String quote;//Current quote
 		if(index<p.Story.size()-1) //Makes sure no index out of bounds errors happen (they shouldn't anyway)
@@ -151,16 +153,16 @@ public class shit extends JApplet implements KeyListener, MouseListener
 				display(name,quote); //Shows the quote on the screen
 				index = next(tag,index); //Sets index  
 			}
-			else if(working.contains(">"))
+			else if(working.contains(">"))//if it's an option
 			{
-				display(working);
+				display(working); //call the options display
 			}
-			else
+			else //no name story line
 			{
 				name = "";
 				quote = working.substring(working.indexOf(']')+1);
 				display(name,quote);
-				index = next(tag,index);
+				index = next(tag,index);//sets up to be called again
 			}
 			
 		}
@@ -168,116 +170,115 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	public  void display(String name, String quote)
 	{
 		state = 1;//Lets the game know it's in a quote
-		System.out.println(name + ":" + quote);
-		nameC=name;
-		quoteC = quote;
-		repaint();
+		System.out.println(name + ":" + quote); //Console shit can be removed whenever
+		nameC=name; // sets the global current name so paint knows what to show
+		quoteC = quote;// sets global quote
+		repaint();//paints again
 	}
 	public  void display(String working)
 	{
 		state = 2;//Lets the game know options should be appearing
 		int i = 0;
-		while(working.contains(">"))
+		while(working.contains(">"))//if there are still options
 		{
-			working = working.substring(working.indexOf(']')+1);
-			options.set(i, working.substring(0,working.indexOf('>')));
-			System.out.println(working.substring(0,working.indexOf('>')));
-			working = working.substring(working.indexOf('>')+1);
+			working = working.substring(working.indexOf(']')+1); //takes out the tag
+			options.set(i, working.substring(0,working.indexOf('>')));//sets the array list
+			System.out.println(working.substring(0,working.indexOf('>')));//console shit can be removed whenever
+			working = working.substring(working.indexOf('>')+1);//cuts out the first option
 			i++;
 		}
 	}
-	public  int next(String tag,int index) 
+	public  int next(String tag,int index) //sets up the next progress for quotes
 	{
-		if(tag.startsWith("S"))
-			return index+1;
+		if(tag.startsWith("S"))//checks to see if this is story
+			return index+1; // goes to the next line
 		
 		return 0;
 	}
-	public  int next(String tag,int index, int choice) 
+	public  int next(String tag,int index, int choice) //sets up the progress for options 
 	{
-		if(tag.startsWith("C"))
+		if(tag.startsWith("C"))//is it a path choice
 		{
-			return lookFor("A"+choice)+1;
+			return lookFor("A"+choice)+1;//goes to the spot in the path you want eg. "A1"
 		}
-		else 
+		else //A normal points based option
 		{
-			String c1 = tag.substring(1);
+			String c1 = tag.substring(1);//used for parsing out the point values
 			String c2 = c1.substring(c1.indexOf('P')+1);
 			String c3 = c2.substring(c2.indexOf('P')+1);
-	            int i = choice;
-	            switch(i){
+	            switch(choice){//what option you used
 	            	case 1:
 	            	{
-	            		points += Integer.parseInt(tag.substring(1,tag.indexOf('P',1)));
+	            		points += Integer.parseInt(tag.substring(1,tag.indexOf('P',1)));//adds the points from option 1
 	            		break;
 	            	}
 	            	case 2:
 	            	{
-	            		points += Integer.parseInt(c2.substring(0,c2.indexOf('P')));
+	            		points += Integer.parseInt(c2.substring(0,c2.indexOf('P')));//adds the points from option 2
 	            		break;
 	            	}
 	            	case 3:
 	            	{
-	            		points += Integer.parseInt(c3);
+	            		points += Integer.parseInt(c3);//adds the points from option 3
 	            		break;
 	            	}
-	            	default: points = 0;
+	            	default: points = 0;//this should never happen
 	            	break;
 	            }
-			return lookFor("SP"+points,index);
+			return lookFor("SP"+points,index);//next spot with the right amount of points eg "SP-1"
 		}
 	}
 
 	public void choose(int x, int y)
-	{
-		int bW = 874, bH = 81;
-		int ox = 216, o1y = 128, o2y = 297, o3y = 466;
-		if(ox < x && x < ox+bW)
+	{//method for clicking the options
+		int bW = 874, bH = 81; //size of the boxes
+		int ox = 216, o1y = 128, o2y = 297, o3y = 466; //location of each box
+		if(ox < x && x < ox+bW) //in the boxes x values
 		{
-			if(o1y < y && y < o1y + bH)
+			if(o1y < y && y < o1y + bH) //First option
 			{
-				index = next(tag,index,1);
-				progress();
+				index = next(tag,index,1); //add the points and set up next progress
+				progress(); //continue
 			}
-			if(o2y < y && y < o2y + bH)
+			if(o2y < y && y < o2y + bH)//Second option
 			{
-				index = next(tag,index,2);
-				progress();
+				index = next(tag,index,2);//add the points and set up next progress
+				progress();//continue
 			}
-			if(o3y < y && y < o3y + bH)
+			if(o3y < y && y < o3y + bH)//Third option
 			{
-				index = next(tag,index,3);
-				progress();
+				index = next(tag,index,3);//add the points and set up next progress
+				progress();//continue
 			}
 			
 		}
 	}
-	private  int lookFor(String string) {
-		for(int i = 0; i <p.Story.size(); i++)
+	private  int lookFor(String string) {//find the next part of the story
+		for(int i = index; i <p.Story.size(); i++)//starts where we are and goes to the end of the story
 		{
-			if(p.Story.get(i).contains(string))
+			if(p.Story.get(i).contains(string)) //found the string
 			{
-				return i;
+				return i;//return where we are
 			}
 		}
-		return 100;
+		return 100;//this should never happen
 	}
-	private  int lookFor(String string,int current) {
-		for(int i = current; i <p.Story.size(); i++)
+	private  int lookFor(String string,int current) {//find the next point value this method is redundant and can easily be taken out
+		for(int i = current; i <p.Story.size(); i++) //starts where we are and goes to end
 		{
-			if(p.Story.get(i).startsWith(string))
+			if(p.Story.get(i).startsWith(string))//found the points
 			{
-				return i;
+				return i;//return where we are
 			}
 		}
-		return 100;
+		return 100;//this should never happen
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if(state == 1)
+		if(state == 1)//we are in a story
 		{
-			progress();
+			progress();//keep going
 		}
 	}
 	@Override
@@ -293,13 +294,13 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(state == 1)
+		if(state == 1)//we are in a story 
 		{
-			progress();
+			progress(); //continue
 		}
-		else if (state == 2)
+		else if (state == 2)//it's an option
 		{
-			choose(e.getX(),e.getY());
+			choose(e.getX(),e.getY());//check where we are to see if it's an option
 		}
 		repaint();
 	}
