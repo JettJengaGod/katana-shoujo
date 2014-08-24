@@ -1,20 +1,20 @@
-SP0B0C0<Nidalee:123456789112345678921234567893&12345678941234567&89512345678961234567897123456789>
-SP0B0C0<Nidalee:Man Alistar, I have never seen horns quite as big!>
-SP0B0C1<Alistar:Why thank you Nidalee, I like to keep them big and shiny>
-SP0B0C0<Nidalee:And those tits, I just want to milk those>
-SP0B0C1<Alistar:YOU CANT MILK THOSE!>
-SP0B0C1<Alistar:Now what do you want>
-SP0B0C0<Nidalee:I'm sorry, I did not mean anything by it>
-SP0B0C1<Alistar:It is ok, I am used to it by now? so what's up?>
+SP0B1C11<Nidalee&123456789112345678921234567893$12345678941234567$89512345678961234567897123456789>
+SP0B1TC11C11<Nidalee&Man Alistar, I have never seen horns quite as big!>
+SP0B1C11<Alistar&Why thank you Nidalee, I like to keep them big and shiny>
+SP0B1C11<Nidalee&And those tits, I just want to milk those>
+SP0B1C11<Alistar&YOU CANT MILK THOSE!>
+SP0B1C11<Alistar&Now what do you want>
+SP0B1C11<Nidalee&I'm sorry, I did not mean anything by it>
+SP0B1C11<Alistar&It is ok, I am used to it by now? so what's up?>
 OP-1P0P1<I just wanted to make babbys>
 <To get down and dirty, you hairy mongrel>
 <I just wanted to spend time with you>*
-SP1B0C1<Alistar: Aw, thank you>
-SP1B0C1<Alistar: Why dont we go someplace special>
+SP1B1C11<Alistar& Aw, thank you>
+SP1B1C11<Alistar& Why dont we go someplace special>
 E
-SP0B0C1<Alistar: I don't understand, speak english bitch>
+SP0B1C11<Alistar& I don't understand, speak english bitch>
 E
-SP-1B0C1<Alistar: Fuck off, pig>
-SP-1B0C1<Alistar: Why do girls only think of my tits!>
-SP-1B0C1<Alistar: You can't milk those!>
+SP-1B1C11<Alistar& Fuck off, pig>
+SP-1B1C11<Alistar& Why do girls only think of my tits!>
+SP-1B1C11<Alistar& You can't milk those!>
 E

@@ -103,7 +103,8 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	public void drawTag(Graphics g)
 	{
 		try {
-			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+1);//gets the file name of the background file
+			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+2);//gets the file name of the background file
+			System.out.println(b);
 			bg = ImageIO.read(new File(b+".png"));//reads in the background file
 			g.drawImage(bg,0,0,null);//draws the background image
 			if(tag.contains("T"))//Two chars?
@@ -111,9 +112,10 @@ public class shit extends JApplet implements KeyListener, MouseListener
 				//CHANGE THIS LINE 
 				int ch1x = 200,ch1y = 200,ch2x = 600,ch2y = 200; //Where they are idk how big they are and where they should go
 				tag = tag.substring(tag.indexOf("T"));//gets the rest of the string after the tag of where they are
-				String ch1 = tag.substring(0, 2);//gets the name of the first character file
+				String ch1 = tag.substring(1, 4);//gets the name of the first character file
+				System.out.println(ch1+"***");
 				c1 = ImageIO.read(new File(ch1+".png"));//reads in the first character image
-				String ch2 = tag.substring(2, 5);//second char file
+				String ch2 = tag.substring(4);//second char file
 				c2 = ImageIO.read(new File(ch2+".png"));//reads in
 				g.drawImage(c1,ch1x,ch1y,null);//draws c1
 				g.drawImage(c2,ch2x,ch2y,null);//draws c2
