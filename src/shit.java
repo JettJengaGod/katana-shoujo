@@ -1,3 +1,5 @@
+
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +10,8 @@ import java.awt.event.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+
 /*This is the shitty file that I chose to do fucking everything in cause I'm too lazy to seprate it out and I wanted to use shitty globals.
  * Enjoy.
  */
@@ -18,6 +22,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	public  int SCREENWIDTH = 1280;// Screen width
 	public  int SCREENHEIGHT = 720;// Screen height
 	int index = 0; //Where we are in the story
+	AudioPlayer ap;
 	ArrayList<String> options = new ArrayList<String>(); //An array list of the current options. 
 	String working;//The text of the current line from the text. Still needs to be parsed into tag name and quote.
 	parser p; //The object that holds the story in an array list p.Story
@@ -30,6 +35,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote 
 	public void init()
 	{
+		ap = new AudioPlayer();
 		options.add("");
 		options.add("");
 		options.add("");//These 3 lines are to populate options.
@@ -62,19 +68,19 @@ public class shit extends JApplet implements KeyListener, MouseListener
 			g.setFont(n); //Sets the name font
 			scene.drawString(nameC,53,430); //Draws the current name
 			g.setFont(q);//sets the quote font 
-			if(!quoteC.contains("&"))
+			if(!quoteC.contains("$"))
 			{
 				scene.drawString(quoteC, 40, 520);//Draws the current qote font
 			}
 			else
 			{
-				scene.drawString(quoteC.substring(0,quoteC.indexOf('&')), 40, 520);
-				quoteC = quoteC.substring(quoteC.indexOf('&')+1);
+				scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520);
+				quoteC = quoteC.substring(quoteC.indexOf('$')+1);
 				int i = 1;
-				while(quoteC.contains("&"))
+				while(quoteC.contains("$"))
 				{
-					scene.drawString(quoteC.substring(0,quoteC.indexOf('&')), 40, 520+50*i);
-					quoteC = quoteC.substring(quoteC.indexOf('&')+1);
+					scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520+50*i);
+					quoteC = quoteC.substring(quoteC.indexOf('$')+1);
 					i++;
 				}
 				scene.drawString(quoteC, 40, 520+50*i);
@@ -125,6 +131,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	}
 	public  void progress() //Function that goes to the next step in the story
 	{
+//		ap.play("/Resources/Music/Scrollsound.mp3");
 		String name; //Name of the char 
 		String quote;//Current quote
 		if(index<p.Story.size()-1) //Makes sure no index out of bounds errors happen (they shouldn't anyway)
@@ -137,10 +144,10 @@ public class shit extends JApplet implements KeyListener, MouseListener
 				return; //Exits
 			}
 			tag = working.substring(0,working.indexOf(']')); //Makes the tag
-			if(working.contains(":")) //If there is a person talking
+			if(working.contains("&")) //If there is a person talking
 			{
-				name = working.substring(working.indexOf(']')+1,working.indexOf(':')); //Set the person's name
-				quote = working.substring(working.indexOf(':')+1); //Set the quote
+				name = working.substring(working.indexOf(']')+1,working.indexOf('&')); //Set the person's name
+				quote = working.substring(working.indexOf('&')+1); //Set the quote
 				display(name,quote); //Shows the quote on the screen
 				index = next(tag,index); //Sets index  
 			}
