@@ -1,9 +1,12 @@
 Definitions:
 
+54 Characters per line
 
 
 S,A,B,C = Route
 P = Point, can be P-1, P0, or P1
+& = Signifies left-hand name
+$ = Signifies \n 
 
 ----------------
 B = Background
@@ -20,17 +23,43 @@ B6 = Cafeteria Background
 C = Character
 
 C0 = Main Character Thoughts
-C1 = Main Character 
-C2 = Girl 1
-C3 = Girl 2
-C4 = Girl 3
-C5 = Teacher
-C6 = NPC 
+
+Girl 1: Kat Shou
+C11 Girl 1 Neutral
+C12 Girl 1 Happy
+C13 Girl 1 Angry
+C14 Girl 1 Sad
+C15 Girl 1 Embarassed
+
+Girl 2: Christina Moriarty
+C21 Girl 2 Neutral
+C22 Girl 2 Happy
+C23 Girl 2 Angry
+C24 Girl 2 Sad
+C25 Girl 2 Embarassed
+
+Girl 3: Ana Jo
+C31 Girl 3 Neutral
+C32 Girl 3 Happy
+C33 Girl 3 Angry
+C34 Girl 3 Sad
+C35 Girl 3 Embarassed
+
+C41 Teacher Happy
+
+C51 NPC Face
 
 -------------------
 T = Two Characters
 
-T1 = Girl 1 and 2
-T2 = Girl 1 and 3
-T3 = Girl 2 and 3
+I.e.) TC11C21 = Girl 1 Neutral + Girl 2 Neutral
 
+
+
+
+
+
+
+
+Hello my name is 
+John Smith, the builder of this place

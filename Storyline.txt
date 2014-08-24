@@ -20,16 +20,16 @@ SP0B1C0<After Class...>
 SP0B1C0<Hisao&Man that class was hard,$guess I'll head to the cafeteria.>
 SP0B1C12<Kat&Wait! Hisao! Hi Hisao!>
 SP0B1C12<Hisao&Oh hello there... WAH!>
-SP0B1C0<This would be a rational response for anyone, right?$A blade sticking out of her would make$anyone scream, right?...>
+SP0B1C0<Turning around to face a girl charging me, blade$in hand, seemed to shake me$more than I would think.>
 SP0B1C15<Kat&I know it can be a bit startling at first,$but I just wanted to come up and say hello!>
 SP0B1C15<Hisao&Oh no, I'm so sorry! I did not mean to$yell like that, that was very rude of me>
 SP0B1C12<Kat&Don't worry about it! My name is Kat,$by the way. Kat Shou. I guess I'll$see you around then.>
 SP0B1C12<Hisao&Yea, definitely! See you later>
-SP0B1C0<Though she has a blade through her,$she seems to be very nonchalant about$her condition...>
+SP0B1C0<Still holding the blade, she ran out$the door, and turned the corner. I wonder why$she has a sword... >
 SP0B1C33<Ana&Ow! Watch where you're going, idiot!> 
 SP0B1C33<Hisao&I'm sorr...>
 SP0B1C33<...>
-SP0B1C33<Ana&Watch where you're staring! You know it is rude$to stare at someone's injuries, right?!>
+SP0B1C33<Ana&Watch where you're staring! You know it is rude$to stare at someone, right?!>
 SP0B1C33<Hisao&Oh! I'm so sorry, I did not mean it>
 SP0B1C33<Ana&Well if you are truly sorry,$then you can buy me lunch!> 
 SP0B1C33<Hisao&What! oh...well, ok then>
@@ -45,7 +45,7 @@ SP0B2TC33C23<Ana&Hmph! Whatever, come on Hisao I want my food>
 SP0B2C0<Seeing the disappointment in Christina as$I followed Ana away made me feel bad, but$a promise, is a promise.>
 SP0B3C0<I can't help but feel exhausted after meeting$so many weird people in so short a time, and$what is with those katanas!>
 SP0B3C0<Scared would be the right word, I guess.$Just imagining those katanas stuck in me$is enough to make me feel queasy>
-SP0B3C0<But I feel bad treating them like creatures$just because they are different$from everyone else>
+SP0B3C0<But I feel bad treating them like creatures$just because they carry those blades around>
 SP0B3C0<It would not hurt to give these girls$a chance. They seem normal enough to me, though$Ana seemed a bit unfriendly>
 SP0B3C0<Maybe I was just too unfamiliar with them$I was gawking at them, which would be$embarassing to anyone, really>
 SP0B3C0<I guess I will just have to act like its normal$from now on, to make sure I am not rude>
@@ -54,7 +54,100 @@ SP0B1C11<Kat&Good Morning Hisao! How was your first$day of school here?>
 SP0B1C11<Hisao&It was great, I met some interesting people$and found my classes ok. Even the cafeteria food$is good!>
 SP0B1C12<Kat&I'm happy to hear that! I was worried$you would be feeling alone after coming to a new$school without any friends>
 SP0B1C12<Hisao&Thanks, I am happy to hear you were concerned$about me, but I have been doing fine.>
-SP0B1TC12C33<Ana&You shouldn't be pampering him like that, Kat.$
+SP0B1TC12C33<Ana&You shouldn't be pampering him like that, Kat.$This idiot knocked into me yesterday, can you$ believe it!>
+SP0B1TC15C33<Kat&Oh don't be that way Ana, I'm sure Hisao$didn't mean to bump into you on purpose!>
+SP0B1TC15C33<Ana&Kat, you are way too trusting! I can't believe$that you are sticking up for this filthy ape>
+SP0B1TC13C33<Kat&Like you know would know what it means$to be trusting at all, you nasty loner>
+SP0B1TC13C35<Kat&Come on Hisao, tell her that she needs to$treat you properly!
+O<"You're being too harsh Kat!"><"Yea Ana, treat me with respect!"><"Like I care what this filth says">
 A1
+SP0B1TC14C32<Kat&Oh..Sorry, I guess I...Thought wrong...excuse me>
+SP0B1C32<Ana&Thank you for saying that>
+SP0B1C33<Ana&...But I didnt need your help, retard!>
+SP0B1C33<Hisao&Uhh...Ok, it was no big deal>
+SP0B1C31<Ana&Now come on, we are going to go get lunch,$I'm starving.>
+SP0B6C32<Ana&Man, don't you love the school's food?$ It's great!>
+SP0B6C32<Hisao&I guess, though aren't you bored$of it after being here for so long?>
+SP0B6C33<Ana&How could I grow tired of this food!?$they make restaurant quality food here>
+SP0B6C33<Hisao&Well I wouldn't say it is restaurant quality,$but it sure is faster than me making it anyways>
+SP0B6C32<Ana&You're able to make this food!? I thought you$were completely useless!>
+SP0B6C32<Hisao&Thanks, I guess...>
+SP0B6C32<Ana&Then tomorrow, you will make me lunch.>
+SP0B6C32<Hisao&Hey! I'm not your slave! I refuse to make it>
+SP0B6C32<Ana&Gahh Home-made food! I'm so excited, I can't$believe my luck.See you tomorrow for lunch!>
+SP0B6C0<I can't help but feel like I'm being$used by Ana, but I also can't help but$feel sorry for her.>
+SP0B2C0<As I enter the classroom, Christina is making$funny faces at me from the back of the classroom>
+SP0B2C22<Christina&Hey neighbor, that was one heck of an argument.$You survive ok?>
+SP0B2C22<Her wink makes me laugh in a way that makes me$calm down and relax>
+SP0B2C22<Hisao&Yea, I'd say that I came out with only minor$scrapes and bruises>
+SP0B2C22<Christina&So what's a newbie such as yourself doing$with so many girls at once? Trying to$start a harem?>
+SP0B2C22<Hisao&Yea? why, are you jealous?>
+SP0B2C22<Christina&Ga ha ha, you are a real joker Hisao. I like it!>
+SP0B2C22<Christina&So hot shot, what are your plans for this$painfully boring day?>
+SP0B2C22<Hisao&Nothing! I have no clue what to do in this place!>
+SP0B2C22<Christina&Then you'll have no problem coming over after$school to play cards?>
+SP0B2C22<Hisao&Uhh...You're inviting a boy you just met$into your house?>
+SP0B2C25<Christina&Well sure, uhh, if you're interested in$coming over tonight>
+SP0B2C25<Hisao&Oh sure! I'd love to come over>
+SP0B2C22<Christina&Ahh there's my boy! Ga ha ha ha, Then we'll head$over after class!>
+SP0B2C22<Hisao&Sure!>
+SP0B4C0<Passing the time with Christina was amazing,$telling jokes and playing poker just like I$was back with my friends.>
+SP0B4C22<Christina&This was an amazing time, thank you for coming over>
+SP0B4C22<Hisao&I can't remember the last time$I had this much fun.>
+SP0B4C22<Christina&Ga ha ha! Then it was a good thing you came!$Maybe you can come over some other time for tea?> 
+SP0B4C22<Hisao&Sure, why don't you give me your pho-HOLY CRAP$IT'S LATE!>
+SP0B4C22<Christina&I know, right? Time really flew!>
+SP0B4C22<Hisao&You don't understand, if I leave the room now$it will look like...umm...>
+SP0B4C22<Hisao&...>
+SP0B4C25<Christina&OH...right...well you need to sneak out, and$don't get caught or...we're both in trouble...>
+SP0B4C25<Hisao&Ok, I'll sneak out then, Goodnight Christina.>
+SP0B4C25<Christina&...trouble...bad...>
+SP0B4C25<Hisao&Christina? Are you okay?>
+SP0B4C22<Christina&Oh, Ga ha ha! I'm ok of course,$see you later Hisao!>
+SP0B3C0<Something was definitely wrong with Christina,$I wonder why she reacted that way...>
+SP0B3C0<Oof!>
+SP0B3C33<Ana&Hey! Watch where you're goin..Hisao!? What are$you doing in the Girl's dorms?>
+SP0B3C33<Hisao&Uh well...>
+SP0B3C33<Ana&Wait! Don't tell me you were$just in Christina's room, you pig!$I'm going back to bed>
+SP0B3C33<Hisao&No Ana, this is a misunderstanding! Wait!...>
+SP0B0C0<This is bad, I don't want Ana to get the wrong$idea, but I also don't want to$hurt Christina's feelings>
+SP0B1C0<Today's class was hard to concentrate. I need$to talk to Ana, make sure she's ok>
+SP0B1C31<Hisao&Ana, I need to talk to you. You have a moment?>
+SP0B1C33<Ana&Do I have a moment for the scum of this earth?$No,I don't think I do>
+SP0B1C31<Hisao&Please just listen Ana, I know it must$have looked bad, me being in the Girl's dorm->
+SP0B1C33<Ana&You bet it did!>
+SP0B1C31<Hisao&-but I'm telling you, I didn't do anything>
+SP0B1C31<Ana&You didnt?>
+SP0B1C31<Hisao&Yes, I promise>
+SP0B1TC31C22<Christina&Hey Hisao! Thanks for everything yesterday!>
+SP0B1TC33C22<Ana&And what is this "everything" that$SHE's talking about?>
+SP0B1TC33C25<Christina&Oh, its nothing Ana! Nothing!>
+
 A2
+SP0B1TC12C34<Ana&I'm...I'm Sorry, I...I didn't mean it...>
+SP0B1TC13C34<Kat&You're always like this Ana, why dont$you go away>
+SP0B1TC13C34<Ana&Ok...>
+SP0B1C12<Kat&I'm sorry about that, Hisao,$Ana can be rude sometimes>
+SP0B1C12<Hisao&It's ok, thank you for standing up for me though.$You are always there to lend a helping hand,$aren't you?>
+SP0B1C12<Kat&Of course I am, now why don't we go have lunch>
+SP0B6C12<Kat&Ooo, they have my favorite sandwich on sale!>
+SP0B6C12<Hisao&You okay? You seemed pretty upset back there>
+SP0B6C11<Kat&Don't worry about me, I just don't like bullies>
+SP0B6C11<Hisao&I'm sorry, that was insensitive to ask.>
+SP0B6C12<Kat&No, it's ok. I'm happy that you're$worried about me but please don't. I'll$feel really bad about making a friend worry.>
+SP0B6C12<Hisao&I can't just ignore a friend's suffering!>
+SP0B6C14<Kat&Oh, I'm sorry Hisao, I really have to go.$But if you want, you can come over tonight$and we can talk about it>
+SP0B6C14<Hisao&Oh sure, I'll meet up with you later then.>
+SP0B6C12<Hisao&Ok, Bye Hisao!>
 A3
+SP0B1TC13C33<Ana&Excuse me! How dare you speak to me that way!>
+SP0B1TC13C33<Kat&Ana's right! That was uncalled for Hisao!>
+SP0B1TC13C33<Hisao&Whatever, you guys do what you want. I'm out>
+SP0B1TC13C33<Kat&Wow, you're rude. Come on, Ana, lets get away$from this asshole>
+SP0B1C51<Classmate&Hey Hisao, lets go have lunch.>
+SP0B6C51<Classmate&You really don't hold back when it$comes this sort of stuff, do you?>
+SP0B6C51<I can only shrug. It's not as if she's wrong.>
+SP0B6C51<Classmate&Girl's hearts are delicate.$You need to choose your words carefully, or else$things like this happen.>
+SP0B6C51<Classmate&Those two were pretty angry. I don't think$apologizing would do you much good$at this point, but you should really be$more considerate in those types of situations.>
+Sp0B6C0<I mull over her advice.$The rest of our meal passes in silence, and by$the time the bell rings I'm all too eager to leave.>
+Sp0B6C0<I bid her a polite farewell. It is only as I am$walking back to the class that I realize that$I never learned her name...>
