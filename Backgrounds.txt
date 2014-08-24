@@ -1,0 +1,36 @@
+Definitions:
+
+
+
+S,A,B,C = Route
+P = Point, can be P-1, P0, or P1
+
+----------------
+B = Background
+
+B0 = Blank, Dark Background
+B1 = Classroom Background
+B2 = Classroom Hallway Background
+B3 = Bedroom Hallway Background
+B4 = Bedroom Background
+B5 = Park Background
+B6 = Cafeteria Background
+
+----------------
+C = Character
+
+C0 = Main Character Thoughts
+C1 = Main Character 
+C2 = Girl 1
+C3 = Girl 2
+C4 = Girl 3
+C5 = Teacher
+C6 = NPC 
+
+-------------------
+T = Two Characters
+
+T1 = Girl 1 and 2
+T2 = Girl 1 and 3
+T3 = Girl 2 and 3
+

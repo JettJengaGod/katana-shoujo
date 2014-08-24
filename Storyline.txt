@@ -1,0 +1,60 @@
+SP0B0C0<Morning light shone gently through the window$shades, dancing merrily on the opposite wall.$When was the last time I had slept so long>
+SP0B0C0<Today would be the start of a new journey,$the first day at my high school. I have been$looking forward to this moment$since I moved in last night.>
+SP0B0C0<The blooming flowers filled the room with$their aromatic fragrances as a slowly got out$of bed and changed for my first day.>
+SP0B0C0<Passing by my desk, I see my notebook open$to my schedule: "8:30am - Meet with Mr. Shin;$9:00am - Classes" >
+SP0B0C0<After showering and preparing for school,$I opened my phone and checked the inbox.>
+SP0B0C0<There is a new message from Mom and Dad:$"we are so proud of you for being so independent.$Good luck at school!">
+SP0B0C0<Closing my phone, I leave for school...>
+SP0B2C41<Mr. Shin&Good Morning, you must be Hisao.$How was your first night in the dormitory?>
+SP0B2C41<Hisao&My night was great, thanks for asking>
+SP0B2C41<Mr. Shin&That is wonderful news, now the$class is looking forward to meeting you.$Are you ready?>
+SP0B2C41<Hisao&I think so, I made sure I had everything$packed yesterday.>
+SP0B2C41<Mr. Shin&Great! Now before I introduce you,$you need to know something about your class.>
+SP0B2C41<Hisao&Uh...Ok? What is it?>
+SP0B2C41<Mr. Shin&You see, some of the girls in this class$are not your average, normal girls$you would find in other schools.>
+SP0B2C41<Mr. Shin&You could even say that they have "sharp"$personalities. Ha ha ha>
+SP0B2C41<Hisao&Umm...Thank you Mr. Shin for the warning>
+SP0B1C41<Mr. Shin&Attention class! Before we start this lesson,$I would like to introduce a new student$who will be with us from now on.>
+SP0B1C41<Mr. Shin&This is Tanaka Hisao, I hope everyone will help$your new classmate come up to speed.>
+SP0B1C0<After Class...>
+SP0B1C0<Hisao&Man that class was hard,$guess I'll head to the cafeteria.>
+SP0B1C12<Kat&Wait! Hisao! Hi Hisao!>
+SP0B1C12<Hisao&Oh hello there... WAH!>
+SP0B1C0<This would be a rational response for anyone, right?$A blade sticking out of her would make$anyone scream, right?...>
+SP0B1C15<Kat&I know it can be a bit startling at first,$but I just wanted to come up and say hello!>
+SP0B1C15<Hisao&Oh no, I'm so sorry! I did not mean to$yell like that, that was very rude of me>
+SP0B1C12<Kat&Don't worry about it! My name is Kat,$by the way. Kat Shou. I guess I'll$see you around then.>
+SP0B1C12<Hisao&Yea, definitely! See you later>
+SP0B1C0<Though she has a blade through her,$she seems to be very nonchalant about$her condition...>
+SP0B1C33<Ana&Ow! Watch where you're going, idiot!> 
+SP0B1C33<Hisao&I'm sorr...>
+SP0B1C33<...>
+SP0B1C33<Ana&Watch where you're staring! You know it is rude$to stare at someone's injuries, right?!>
+SP0B1C33<Hisao&Oh! I'm so sorry, I did not mean it>
+SP0B1C33<Ana&Well if you are truly sorry,$then you can buy me lunch!> 
+SP0B1C33<Hisao&What! oh...well, ok then>
+SP0B1C0<This girl seems really rude,$I wonder what's her deal$...besides the giant blade in her>
+SP0B2C32<Hisao&So what do you want from the cafeter...>
+SP0B2C22<Christina&Whoops! I'm so sorry, I did not mean to knock$into you, silly me!> 
+SP0B2C22<Hisao&It's ok, I did not see you either.>
+SP0B2TC33C22<Ana&What are you spacing out for! What about my food,$you waste of space!>
+SP0B2TC33C23<Christina& Don't be so rude to the new student, Ana!>
+SP0B2TC33C22<Christina& I'm sorry about that Hisao$my name is Christina Moriarty, and please$let me know if you need any help because I>
+SP0B2TC33C23<Christina&...unlike some people, want to help>
+SP0B2TC33C23<Ana&Hmph! Whatever, come on Hisao I want my food>
+SP0B2C0<Seeing the disappointment in Christina as$I followed Ana away made me feel bad, but$a promise, is a promise.>
+SP0B3C0<I can't help but feel exhausted after meeting$so many weird people in so short a time, and$what is with those katanas!>
+SP0B3C0<Scared would be the right word, I guess.$Just imagining those katanas stuck in me$is enough to make me feel queasy>
+SP0B3C0<But I feel bad treating them like creatures$just because they are different$from everyone else>
+SP0B3C0<It would not hurt to give these girls$a chance. They seem normal enough to me, though$Ana seemed a bit unfriendly>
+SP0B3C0<Maybe I was just too unfamiliar with them$I was gawking at them, which would be$embarassing to anyone, really>
+SP0B3C0<I guess I will just have to act like its normal$from now on, to make sure I am not rude>
+SP0B0C0<The Next Day>
+SP0B1C11<Kat&Good Morning Hisao! How was your first$day of school here?>
+SP0B1C11<Hisao&It was great, I met some interesting people$and found my classes ok. Even the cafeteria food$is good!>
+SP0B1C12<Kat&I'm happy to hear that! I was worried$you would be feeling alone after coming to a new$school without any friends>
+SP0B1C12<Hisao&Thanks, I am happy to hear you were concerned$about me, but I have been doing fine.>
+SP0B1TC12C33<Ana&You shouldn't be pampering him like that, Kat.$
+A1
+A2
+A3
