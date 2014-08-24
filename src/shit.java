@@ -22,7 +22,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	public  int SCREENWIDTH = 1280;// Screen width
 	public  int SCREENHEIGHT = 720;// Screen height
 	int index = 0; //Where we are in the story
-	AudioPlayer ap;//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
+//	AudioPlayer ap;//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 	ArrayList<String> options = new ArrayList<String>(); //An array list of the current options. 
 	String working;//The text of the current line from the text. Still needs to be parsed into tag name and quote.
 	parser p; //The object that holds the story in an array list p.Story
@@ -35,7 +35,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote 
 	public void init()
 	{
-		ap = new AudioPlayer();//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
+//		ap = new AudioPlayer();//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 		options.add("");
 		options.add("");
 		options.add("");//These 3 lines are to populate options.
@@ -43,7 +43,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 		try {
 			obox = ImageIO.read(new File("options.png"));
 			textBox =ImageIO.read(new File("Text Boxes.png"));//reads in the text boxes file.
-			p = new parser("Storyline.txt");//reads in the story file.
+			p = new parser("TestRoute.txt");//reads in the story file.
 			progress();//the function that calls going through to the next line 
 		} catch (IOException e) {
 			e.printStackTrace();
