@@ -43,7 +43,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 		try {
 			obox = ImageIO.read(new File("options.png"));
 			textBox =ImageIO.read(new File("Text Boxes.png"));//reads in the text boxes file.
-			p = new parser("TestRoute.txt");//reads in the story file.
+			p = new parser("Storyline.txt");//reads in the story file.
 			progress();//the function that calls going through to the next line 
 		} catch (IOException e) {
 			e.printStackTrace();
