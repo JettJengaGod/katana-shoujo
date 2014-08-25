@@ -109,7 +109,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		
 		scene.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		Font q = new Font("Source Sans Pro",Font.PLAIN,40);//Makes the font we use for options and story text
+		Font q = new Font("Source Sans Pro",Font.PLAIN,48);//Makes the font we use for options and story text
 		g.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT);//Clears the screen
 		g.setFont(q); //Sets the default font
 		
@@ -135,11 +135,11 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 				int i = 1;//how many lines
 				while(quoteCCopy.contains("$")) //if there are more lines
 				{
-					scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 525+50*i);//draw next line
+					scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 525+65*i);//draw next line
 					quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//get rid of that line
 					i++;
 				}
-				scene.drawString(quoteCCopy, 40, 525+50*i);//draw last line
+				scene.drawString(quoteCCopy, 40, 525+65*i);//draw last line
 			}
 		}
 		else if(state == 2)//Draws the options
@@ -159,6 +159,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	public void drawTag(Graphics g)
 	{
 		try {
+			System.out.println(tag);
 			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+2);//gets the file name of the background file
 			System.out.println(b);
 			bg = ImageIO.read(new File(b+".png"));//reads in the background file
