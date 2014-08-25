@@ -68,6 +68,16 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		try {
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("sspr.ttf")));
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		resize(SCREENWIDTH,SCREENHEIGHT); //Makes the applet the size we want it
 		addMouseListener(this); //Lets us use mouse
 		addKeyListener(this); //Lets us use keyboard
@@ -97,7 +107,9 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		Graphics2D scene = (Graphics2D)g;//Not really sure what this is. Blame Victor
 		//use scene to draw the background
 		
-		Font q = new Font("Arial",Font.PLAIN,40);//Makes the font we use for options and story text
+		scene.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+		
+		Font q = new Font("Source Sans Pro",Font.PLAIN,40);//Makes the font we use for options and story text
 		g.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT);//Clears the screen
 		g.setFont(q); //Sets the default font
 		
@@ -107,9 +119,9 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		{
 			drawTag(g);
 			g.drawImage(textBox, 0,0,null); //draw the story boxes
-			Font n = new Font("Arial",Font.PLAIN,48);//Makes the font for the names
+			Font n = new Font("Arial",Font.BOLD,48);//Makes the font for the names
 			g.setFont(n); //Sets the name font
-			scene.drawString(nameC,53,430); //Draws the current name
+			scene.drawString(nameC,53,435); //Draws the current name
 			g.setFont(q);//sets the quote font 
 			if(!quoteC.contains("$")) //No line breaks
 			{
@@ -118,16 +130,16 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			else
 			{
 				String quoteCCopy = quoteC; // We use a quoteCCopy so we don't accidentally erase on each run loop
-				scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 520); //draw the first line
+				scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 525); //draw the first line
 				quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//erase the first line
 				int i = 1;//how many lines
 				while(quoteCCopy.contains("$")) //if there are more lines
 				{
-					scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 520+50*i);//draw next line
+					scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 525+50*i);//draw next line
 					quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//get rid of that line
 					i++;
 				}
-				scene.drawString(quoteCCopy, 40, 520+50*i);//draw last line
+				scene.drawString(quoteCCopy, 40, 525+50*i);//draw last line
 			}
 		}
 		else if(state == 2)//Draws the options
