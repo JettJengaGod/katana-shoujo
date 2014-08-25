@@ -47,8 +47,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	int screenShakeY = 0;
 	boolean fadeUpdate = false;
 	float fadeCounter = 60f;
-	float FADETIMELIMIT = 16f;
-	boolean fadeTrack = true;
+	float FADETIMELIMIT = 32f;
 	Random r;
 	FontMetrics fm;
 	
@@ -152,15 +151,22 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		}
 		else if(state == 2)//Draws the options
 		{
-			scene.drawImage(bg, 0, 0, null);
-			scene.drawImage(obox, 0, 0, null);//options thing
+			scene.drawImage(bg, screenShakeX, screenShakeY, null);
+			scene.drawImage(obox, screenShakeX, screenShakeY, null);//options thing
 			scene.drawString(options.get(0), 220, 255);
 			scene.drawString(options.get(1), 220, 375);
 			scene.drawString(options.get(2), 220, 495);
 		}
 		else if(state == 3)//Game is over
 		{
-			scene.drawImage(bg, 0, 0, null);
+			scene.drawImage(oldbg, screenShakeX, screenShakeY, null);
+			
+			float opacity = fadeCounter/FADETIMELIMIT;
+			if(opacity > 1.0f)
+				opacity = 1.0f;
+			scene.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+			scene.drawImage(bg, screenShakeX, screenShakeY,null);//draws the background image
+			scene.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 			scene.drawString("The end", 40, 520); //End screen
 		}
 	}
@@ -176,13 +182,8 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 				g.drawImage(bg, screenShakeX, screenShakeY, null);
 			}
 			
-			else if(oldbg != bg && oldbg != null)
-			{				
-				if(fadeTrack)
-				{
-					fadeCounter = 0;
-					fadeTrack = false;
-				}
+			else if(oldbg != bg)
+			{
 				if(fadeCounter == FADETIMELIMIT)
 				{
 					oldbg = bg;
@@ -233,7 +234,10 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		}
 	}
 	public  void progress() //Function that goes to the next step in the story
-	{
+	{	
+		if(state == 3)
+			return;
+		
 //		ap.play("/Resources/Music/Scrollsound.mp3"); //THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 		String name; //Name of the char 
 		String quote;//Current quote
@@ -242,6 +246,13 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			working = p.Story.get(index); //Sets up the string we are working with
 			if(working.equals("ending"))//checks if we are at the end
 			{
+				oldbg = bg;
+				try {
+					bg = ImageIO.read(new File("b0.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				state = 3; //Sets end state
 				System.out.println("End");//For the text part of game
 				return; //Exits
@@ -299,7 +310,9 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			System.out.println("Tag: " + tag);
 			System.out.println("Index: " + index);
 			System.out.println("Choice: " + choice);
-			return lookFor("A"+choice)+1;//goes to the spot in the path you want eg. "A1"
+			char togo = tag.charAt((choice - 1)*2 + 1);
+			System.out.println("Togo: " + togo);
+			return lookFor("A"+togo)+1;//goes to the spot in the path you want eg. "A1"
 		}
 		else //A normal points based option
 		{
@@ -331,8 +344,8 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 
 	public void choose(int x, int y)
 	{//method for clicking the options
-		int bW = 874, bH = 81; //size of the boxes
-		int ox = 216, o1y = 128, o2y = 297, o3y = 466; //location of each box
+		int bW = 876, bH = 89; //size of the boxes
+		int ox = 201, o1y = 200, o2y = 321, o3y = 438; //location of each box
 		if(ox < x && x < ox+bW) //in the boxes x values
 		{
 			if(o1y < y && y < o1y + bH) //First option
@@ -377,12 +390,41 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		{
+			System.exit(0);
+		}
+		
 		// TODO Auto-generated method stub
 		if(state == 1)//we are in a story
 		{
+			if(fadeCounter < FADETIMELIMIT)
+			{
+				fadeCounter = FADETIMELIMIT;
+				oldbg = bg;
+			}
+			
 			fadeUpdate = true;
 			fadeCounter = 0;
 			progress();//keep going
+		}
+		else if(state == 2)
+		{
+			if(e.getKeyCode() == KeyEvent.VK_1)
+			{
+				index = next(tag,index,1);
+				progress();
+			}
+			else if(e.getKeyCode() == KeyEvent.VK_2)
+			{
+				index = next(tag,index,2);
+				progress();
+			}
+			else if(e.getKeyCode() == KeyEvent.VK_3)
+			{
+				index = next(tag,index,3);
+				progress();
+			}
 		}
 	}
 	@Override
