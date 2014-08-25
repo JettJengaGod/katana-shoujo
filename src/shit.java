@@ -78,7 +78,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		resize(SCREENWIDTH,SCREENHEIGHT); //Makes the applet the size we want it
 		addMouseListener(this); //Lets us use mouse
 		addKeyListener(this); //Lets us use keyboard
@@ -109,9 +109,10 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		//use scene to draw the background
 		
 		scene.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+
+		g.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT);//Clears the screen
 		
 		Font q = new Font("Source Sans Pro",Font.PLAIN,40);//Makes the font we use for options and story text
-		g.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT);//Clears the screen
 		g.setFont(q); //Sets the default font
 		
 		g.setColor(Color.white);
@@ -120,7 +121,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		{
 			drawTag(g);
 			g.drawImage(textBox, 0,0,null); //draw the story boxes
-			Font n = new Font("Arial",Font.BOLD,48);//Makes the font for the names
+			Font n = new Font("Source Sans Pro",Font.BOLD,48);//Makes the font for the names
 			g.setFont(n); //Sets the name font
 			scene.drawString(nameC,53,435); //Draws the current name
 			g.setFont(q);//sets the quote font 
@@ -153,22 +154,20 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		{
 			scene.drawImage(bg, 0, 0, null);
 			scene.drawImage(obox, 0, 0, null);//options thing
-			scene.drawString(options.get(0), 220, 180);
-			scene.drawString(options.get(1), 220, 358);
-			scene.drawString(options.get(2), 220, 527);
+			scene.drawString(options.get(0), 220, 255);
+			scene.drawString(options.get(1), 220, 375);
+			scene.drawString(options.get(2), 220, 495);
 		}
 		else if(state == 3)//Game is over
 		{
-
+			scene.drawImage(bg, 0, 0, null);
 			scene.drawString("The end", 40, 520); //End screen
 		}
 	}
 	public void drawTag(Graphics g)
 	{
 		try {
-			System.out.println(tag);
 			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+2);//gets the file name of the background file
-			System.out.println(b);
 			bg = ImageIO.read(new File(b+".png"));//reads in the background file
 			
 			if(oldbg == null)
@@ -178,9 +177,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			}
 			
 			else if(oldbg != bg && oldbg != null)
-			{
-				System.out.println(fadeCounter);
-				
+			{				
 				if(fadeTrack)
 				{
 					fadeCounter = 0;
@@ -216,7 +213,6 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 				String tagCopy = tag; // Need to make a copy because we still need to access the background component later
 				tagCopy = tagCopy.substring(tag.indexOf("T"));//gets the rest of the string after the tag of where they are
 				String ch1 = tagCopy.substring(1, 4);//gets the name of the first character file
-				System.out.println(ch1+"***");
 				c1 = ImageIO.read(new File(ch1+".png"));//reads in the first character image
 				String ch2 = tagCopy.substring(4);//second char file
 				c2 = ImageIO.read(new File(ch2+".png"));//reads in
@@ -238,7 +234,6 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	}
 	public  void progress() //Function that goes to the next step in the story
 	{
-		System.out.println("Progress called");
 //		ap.play("/Resources/Music/Scrollsound.mp3"); //THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 		String name; //Name of the char 
 		String quote;//Current quote
@@ -275,7 +270,6 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	public  void display(String name, String quote)
 	{
 		state = 1;//Lets the game know it's in a quote
-		System.out.println(name + ":" + quote); //Console shit can be removed whenever
 		nameC=name; // sets the global current name so paint knows what to show
 		quoteC = quote;// sets global quote
 	}
@@ -287,7 +281,6 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		{
 			working = working.substring(working.indexOf(']')+1); //takes out the tag
 			options.set(i, working.substring(0,working.indexOf('>')));//sets the array list
-			System.out.println(working.substring(0,working.indexOf('>')));//console shit can be removed whenever
 			working = working.substring(working.indexOf('>')+1);//cuts out the first option
 			i++;
 		}
@@ -303,6 +296,9 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	{
 		if(tag.startsWith("C"))//is it a path choice
 		{
+			System.out.println("Tag: " + tag);
+			System.out.println("Index: " + index);
+			System.out.println("Choice: " + choice);
 			return lookFor("A"+choice)+1;//goes to the spot in the path you want eg. "A1"
 		}
 		else //A normal points based option
@@ -359,8 +355,10 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	private  int lookFor(String string) {//find the next part of the story
 		for(int i = index; i <p.Story.size(); i++)//starts where we are and goes to the end of the story
 		{
+			System.out.println(p.Story.get(i));
 			if(p.Story.get(i).contains(string)) //found the string
 			{
+				System.out.println(i);
 				return i;//return where we are
 			}
 		}
@@ -369,6 +367,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	private  int lookFor(String string,int current) {//find the next point value this method is redundant and can easily be taken out
 		for(int i = current; i <p.Story.size(); i++) //starts where we are and goes to end
 		{
+			System.out.println(p.Story.get(i));
 			if(p.Story.get(i).startsWith(string))//found the points
 			{
 				return i;//return where we are
@@ -381,6 +380,8 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		// TODO Auto-generated method stub
 		if(state == 1)//we are in a story
 		{
+			fadeUpdate = true;
+			fadeCounter = 0;
 			progress();//keep going
 		}
 	}
