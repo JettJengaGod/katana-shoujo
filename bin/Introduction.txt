@@ -59,7 +59,7 @@ SP0B1TC15C33<Kat&Oh don't be that way Ana, I'm sure Hisao$didn't mean to bump in
 SP0B1TC15C33<Ana&Kat, you are way too trusting! I can't believe$that you are sticking up for this filthy ape>
 SP0B1TC13C33<Kat&Like you know would know what it means$to be trusting at all, you nasty loner>
 SP0B1TC13C35<Kat&Come on Hisao, tell her that she needs to$treat you properly!>
-OA1A2A3<"You're being too harsh Kat!"><"Yea Ana, treat me with respect!"><"Like I care what this filth says">*
+OC1C2C3<"You're being too harsh Kat!"><"Yea Ana, treat me with respect!"><"Like I care what this filth says">*
 A1
 SP0B1TC14C32<Kat&Oh..Sorry, I guess I...Thought wrong...excuse me>
 SP0B1C32<Ana&Thank you for saying that>
@@ -129,7 +129,7 @@ SP0B1TC33C23<Christina&You know Ana, I don't think you're being$very nice right 
 SP0B1TC33C23<Ana&Fine, maybe I will! Goodbye Hisao, hope you had fun>
 SP0B1TC33C25<If Ana leaves right now, I don't think she'll$ever forgive me, but running after her would$definitely offend Christina.>
 SP0B1TC33C25<What should I do?>
-OA6A5A7<Chase after Ana><Leave her, Christina's right!><I'll deal with this later>*
+OC6C5C7<Chase after Ana><Leave her, Christina's right!><I'll deal with this later>*
 A6
 A5
 A7
@@ -207,7 +207,7 @@ SP0B1C14<Kat&I'm sorry, I just need to...>
 SP0B1TC14C22<Christina&Hey Hisao! Kat! How are you guys doing?>
 SP0B1TC14C22<Kat&I'm sorry, I need to leave.>
 SP0B1TC14C22<Everything seems to be rushing by, I am not even$sure what I can do...>
-OA5A4A7<I can apologize later><Run after her!><Run away>*
+OC5C4C7<I can apologize later><Run after her!><Run away>*
 A4
 A5
 A7
@@ -244,7 +244,7 @@ SP0B1C22<Hisao&so what do you want?>
 SP0B1C22<Christina&Just wanted to see if you wanted$to hang out later!>
 SP0B1C22<Hisao&No I can't, I'm...busy>
 SP0B1C24<Christina&Oh...Ok, if you're busy. Too bad, I kinda wanted$ to get to know you>
-OA5A7A7<Sorry, maybe some other time><Oh But I can hang out tomorrow><But I don't want to know you, beat it!>*
+OC5C7C7<Sorry, maybe some other time><Oh But I can hang out tomorrow><But I don't want to know you, beat it!>*
 A7
 SP0B1C24<Hisao&Yea, maybe some other time. Sorry>
 SP0B1C24<I knew it was a lie, I felt no particular$reason to even talk to her, but I wanted to be polite>
