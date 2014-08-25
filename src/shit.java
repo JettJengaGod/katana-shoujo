@@ -64,7 +64,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		try {
 			obox = ImageIO.read(new File("options.png"));
 			textBox =ImageIO.read(new File("Text Boxes.png"));//reads in the text boxes file.
-			p = new parser("Introduction2.txt");//reads in the story file.
+			p = new parser("Introduction.txt");//reads in the story file.
 			progress();//the function that calls going through to the next line 
 		} catch (IOException e) {
 			e.printStackTrace();
