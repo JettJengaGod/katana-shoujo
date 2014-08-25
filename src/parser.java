@@ -2,19 +2,13 @@ import java.io.*;
 import java.util.*;
 public class parser 
 {
-	String all; //the string that holds the whole story
 	private String path; //the file path
 	public ArrayList<String> Story = new ArrayList<String>(); //Semi parsed story
 	public boolean done = false; // if we went through the whole file
 	public parser(String file) throws IOException
 	{
-		all=""; 
 		path = file;
 		readStuff();
-		while(!done)//not done
-		{
-			Story.add(parse());//keep parsing
-		}
 	}
 	public void readStuff() throws IOException //reads in the file to all 
 	{
@@ -24,14 +18,14 @@ public class parser
 		    String line; //the current line
 		    while ((line = br.readLine()) != null) //if it's not null read it again
 		    {
-		    	all += line; //add it to the screen
+		    	Story.add(parse(line)); //add it to the screen
 		    }
 		} finally {
 			
 		    br.close();//end the buffer reader
 		}
 	}
-	public String parse() //puts the tags and quotes in the array list
+	public String parse(String all) //puts the tags and quotes in the array list
 	{
 		char sent; //first char
 		if(!all.isEmpty()) //we ain't done
