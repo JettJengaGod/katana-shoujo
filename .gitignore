@@ -45,7 +45,7 @@ Desktop.ini
 *.pydevproject
 .project
 .metadata
-bin/**
+#bin/**
 tmp/**
 tmp/**/*
 *.tmp
