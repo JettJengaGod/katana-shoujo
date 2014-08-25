@@ -7,6 +7,8 @@ S,A,B,C = Route
 P = Point, can be P-1, P0, or P1
 & = Signifies left-hand name
 $ = Signifies \n 
+H = Screen Shake
+R1 = Ticking Sound
 
 ----------------
 B = Background
@@ -18,6 +20,10 @@ B3 = Bedroom Hallway Background
 B4 = Bedroom Background
 B5 = Park Background
 B6 = Cafeteria Background
+B7 = Guy's Dorm Hallway
+B8 = Classroom evening
+B9 = Guy's Dorm
+
 
 ----------------
 C = Character
@@ -56,10 +62,9 @@ I.e.) TC11C21 = Girl 1 Neutral + Girl 2 Neutral
 
 
 
+FOR OPTION, NEED TO BE ABLE TO TAG WHICH ROUTES COME FROM THE OPTION
+I.e.) OA1A2A3....
+I.e.) OP-1P0P1...
 
 
-
-
-
-Hello my name is 
-John Smith, the builder of this place
+ALSO DONT FORGET TO * THE END OF THE OPTIONS

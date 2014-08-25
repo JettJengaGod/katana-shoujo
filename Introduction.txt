@@ -207,7 +207,7 @@ SP0B1C14<Kat&I'm sorry, I just need to...>
 SP0B1TC14C22<Christina&Hey Hisao! Kat! How are you guys doing?>
 SP0B1TC14C22<Kat&I'm sorry, I need to leave.>
 SP0B1TC14C22<Everything seems to be rushing by, I am not even$sure what I can do...>
-OA5A4A7<I can apologize later><Run after her!><Run away>
+OA5A4A7<I can apologize later><Run after her!><Run away>*
 A4
 A5
 A7
@@ -244,7 +244,7 @@ SP0B1C22<Hisao&so what do you want?>
 SP0B1C22<Christina&Just wanted to see if you wanted$to hang out later!>
 SP0B1C22<Hisao&No I can't, I'm...busy>
 SP0B1C24<Christina&Oh...Ok, if you're busy. Too bad, I kinda wanted$ to get to know you>
-OA5A7A7<Sorry, maybe some other time><Oh But I can hang out tomorrow><But I don't want to know you, beat it!>
+OA5A7A7<Sorry, maybe some other time><Oh But I can hang out tomorrow><But I don't want to know you, beat it!>*
 A7
 SP0B1C24<Hisao&Yea, maybe some other time. Sorry>
 SP0B1C24<I knew it was a lie, I felt no particular$reason to even talk to her, but I wanted to be polite>
