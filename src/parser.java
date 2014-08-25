@@ -30,6 +30,7 @@ public class parser
 		char sent; //first char
 		if(!all.isEmpty()) //we ain't done
 		{
+			System.out.println(all);
 			sent = all.charAt(0);//make it the first char
 			int start = 0; //preliminary value
 			int end = 0;// preliminary value
@@ -55,6 +56,7 @@ public class parser
 					end = all.indexOf('>');
 					options+=all.substring(0,start)+']'+all.substring(start+1, end+1);//adds next option
 					all = all.substring(end+1);//erase what we just added
+					System.out.println(options);
 				}
 				all = all.substring(1);//erases the *
 				return options;//adds a string with all the options 

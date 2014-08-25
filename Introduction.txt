@@ -58,7 +58,7 @@ SP0B1TC12C33<Ana&You shouldn't be pampering him like that, Kat.$This idiot knock
 SP0B1TC15C33<Kat&Oh don't be that way Ana, I'm sure Hisao$didn't mean to bump into you on purpose!>
 SP0B1TC15C33<Ana&Kat, you are way too trusting! I can't believe$that you are sticking up for this filthy ape>
 SP0B1TC13C33<Kat&Like you know would know what it means$to be trusting at all, you nasty loner>
-SP0B1TC13C35<Kat&Come on Hisao, tell her that she needs to$treat you properly!
+SP0B1TC13C35<Kat&Come on Hisao, tell her that she needs to$treat you properly!>
 OA1A2A3<"You're being too harsh Kat!"><"Yea Ana, treat me with respect!"><"Like I care what this filth says">
 A1
 SP0B1TC14C32<Kat&Oh..Sorry, I guess I...Thought wrong...excuse me>
@@ -253,7 +253,7 @@ SP0B1C24<Christina&Well ok, I guess I'll talk to you later then>
 SP0B1C24<Hisao&Yea, sure>
 SP0B1C0<As she left, I realized just far I had fallen.>
 SP0B1C0<All of these girls were so nice to me, had treated$me with kindness and respect.>
-SP0B1C0<And this is how I repay them?$Being rude and reclused?
+SP0B1C0<And this is how I repay them?$Being rude and reclused?>
 SP0B1C0<Maybe I don't deserve to have friends at all...>
 SP0B0C0<I guess I don't deserve to live...>
 E
