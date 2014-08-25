@@ -1,6 +1,7 @@
 
 
 import java.io.BufferedReader;
+import java.util.Random;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,7 +17,7 @@ import javax.swing.*;
 /*This is the shitty file that I chose to do fucking everything in cause I'm too lazy to seprate it out and I wanted to use shitty globals.
  * Enjoy.
  */
-public class shit extends Applet implements KeyListener, MouseListener
+public class shit extends Applet implements KeyListener, MouseListener, Runnable
 {
 	//Globals
     int state; //What type of thing we are at in the game. 1 is story panel 2 is options 3 is end
@@ -35,10 +36,23 @@ public class shit extends Applet implements KeyListener, MouseListener
 	Graphics bufferGraphics;
 	int points; //How many points your character is at.
 	String tag; //The tag that shows what the current line is
-	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote 
+	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote
+	long timer;
+	boolean screenShakeUpdate;
+	int screenShakeCounter;
+	int SCREENSHAKESTRENGTH = 10;
+	int SCREENSHAKETIMELIMIT = 60; // 1 second
+	int screenShakeX = 0;
+	int screenShakeY = 0;
+	Random r;
+	
 	public void init()
-	{
+	{	
+		r = new Random();
 //		ap = new AudioPlayer();//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
+		screenShakeUpdate = false;
+		screenShakeCounter = 0;
+		timer = System.currentTimeMillis();
 		options.add("");
 		options.add("");
 		options.add("");//These 3 lines are to populate options.
@@ -54,6 +68,9 @@ public class shit extends Applet implements KeyListener, MouseListener
 		resize(SCREENWIDTH,SCREENHEIGHT); //Makes the applet the size we want it
 		addMouseListener(this); //Lets us use mouse
 		addKeyListener(this); //Lets us use keyboard
+		
+		Thread t = new Thread(this);
+		t.start();
 	}
 	
 	public void update (Graphics g) 
@@ -127,7 +144,8 @@ public class shit extends Applet implements KeyListener, MouseListener
 			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+2);//gets the file name of the background file
 			System.out.println(b);
 			bg = ImageIO.read(new File(b+".png"));//reads in the background file
-			g.drawImage(bg,0,0,null);//draws the background image
+			
+			g.drawImage(bg, screenShakeX, screenShakeY,null);//draws the background image
 			if(tag.contains("T"))//Two chars?
 			{
 				//CHANGE THIS LINE 
@@ -187,7 +205,6 @@ public class shit extends Applet implements KeyListener, MouseListener
 				display(name,quote);
 				index = next(tag,index);//sets up to be called again
 			}
-			
 		}
 	}
 	public  void display(String name, String quote)
@@ -196,7 +213,6 @@ public class shit extends Applet implements KeyListener, MouseListener
 		System.out.println(name + ":" + quote); //Console shit can be removed whenever
 		nameC=name; // sets the global current name so paint knows what to show
 		quoteC = quote;// sets global quote
-		repaint();//paints again
 	}
 	public  void display(String working)
 	{
@@ -273,7 +289,6 @@ public class shit extends Applet implements KeyListener, MouseListener
 				index = next(tag,index,3);//add the points and set up next progress
 				progress();//continue
 			}
-			
 		}
 	}
 	private  int lookFor(String string) {//find the next part of the story
@@ -316,6 +331,7 @@ public class shit extends Applet implements KeyListener, MouseListener
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		screenShakeUpdate = true;
 		// TODO Auto-generated method stub
 		if(state == 1)//we are in a story 
 		{
@@ -325,7 +341,6 @@ public class shit extends Applet implements KeyListener, MouseListener
 		{
 			choose(e.getX(),e.getY());//check where we are to see if it's an option
 		}
-		repaint();
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -346,5 +361,42 @@ public class shit extends Applet implements KeyListener, MouseListener
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void run() {
+		while(true)
+		{
+			long temp = System.currentTimeMillis();
+			if((temp - timer) >= 16L)
+			{
+				timer = temp;
+				if(screenShakeUpdate)
+				{
+					if(screenShakeCounter % 2 == 1)
+					{
+						screenShakeX = r.nextInt(SCREENSHAKESTRENGTH) - SCREENSHAKESTRENGTH/2;
+						screenShakeY = r.nextInt(SCREENSHAKESTRENGTH) - SCREENSHAKESTRENGTH/2;
+					}
+					
+					else
+					{
+						screenShakeX = 0;
+						screenShakeY = 0;
+					}
+					
+					screenShakeCounter++;
+					if(screenShakeCounter > SCREENSHAKETIMELIMIT)
+					{
+						screenShakeUpdate = false;
+						screenShakeCounter = 0;
+						screenShakeX = 0;
+						screenShakeY = 0;
+					}
+					System.out.println("screenshake");
+					repaint();
+				}
+			}
+		}
 	}
 }
