@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -15,7 +16,7 @@ import javax.swing.*;
 /*This is the shitty file that I chose to do fucking everything in cause I'm too lazy to seprate it out and I wanted to use shitty globals.
  * Enjoy.
  */
-public class shit extends JApplet implements KeyListener, MouseListener
+public class shit extends Applet implements KeyListener, MouseListener
 {
 	//Globals
     int state; //What type of thing we are at in the game. 1 is story panel 2 is options 3 is end
@@ -30,6 +31,8 @@ public class shit extends JApplet implements KeyListener, MouseListener
 	Image obox;
 	Image bg;
 	Image c,c1,c2;
+	Image buffer; // For double buffering
+	Graphics bufferGraphics;
 	int points; //How many points your character is at.
 	String tag; //The tag that shows what the current line is
 	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote 
@@ -43,7 +46,7 @@ public class shit extends JApplet implements KeyListener, MouseListener
 		try {
 			obox = ImageIO.read(new File("options.png"));
 			textBox =ImageIO.read(new File("Text Boxes.png"));//reads in the text boxes file.
-			p = new parser("TestRoute.txt");//reads in the story file.
+			p = new parser("Introduction.txt");//reads in the story file.
 			progress();//the function that calls going through to the next line 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,6 +55,25 @@ public class shit extends JApplet implements KeyListener, MouseListener
 		addMouseListener(this); //Lets us use mouse
 		addKeyListener(this); //Lets us use keyboard
 	}
+	
+	public void update (Graphics g) 
+	{
+		System.out.println("Update running");
+		
+		// initialize buffer 
+		if (buffer == null) 
+		{
+			buffer = createImage (this.getSize().width, this.getSize().height); 
+			bufferGraphics = buffer.getGraphics (); 
+		}
+		
+		bufferGraphics.fillRect (0, 0, this.getSize().width, this.getSize().height); 
+		paint (bufferGraphics); 
+	
+		// draw image on the screen 
+		g.drawImage (buffer, 0, 0, this);
+	}
+	
 	public void paint(Graphics g)//function that puts everything on the screen
 	{
 		Graphics2D scene = (Graphics2D)g;//Not really sure what this is. Blame Victor
@@ -98,7 +120,6 @@ public class shit extends JApplet implements KeyListener, MouseListener
 
 			scene.drawString("The end", 40, 520); //End screen
 		}
-		
 	}
 	public void drawTag(Graphics g)
 	{
