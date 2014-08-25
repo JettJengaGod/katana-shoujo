@@ -47,9 +47,10 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	int screenShakeY = 0;
 	boolean fadeUpdate = false;
 	float fadeCounter = 60f;
-	float FADETIMELIMIT = 32f; // ~0.5 second
+	float FADETIMELIMIT = 16f;
 	boolean fadeTrack = true;
 	Random r;
+	FontMetrics fm;
 	
 	public void init()
 	{	
@@ -63,7 +64,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		try {
 			obox = ImageIO.read(new File("options.png"));
 			textBox =ImageIO.read(new File("Text Boxes.png"));//reads in the text boxes file.
-			p = new parser("Introduction.txt");//reads in the story file.
+			p = new parser("Introduction2.txt");//reads in the story file.
 			progress();//the function that calls going through to the next line 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -109,7 +110,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		
 		scene.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		Font q = new Font("Source Sans Pro",Font.PLAIN,48);//Makes the font we use for options and story text
+		Font q = new Font("Source Sans Pro",Font.PLAIN,40);//Makes the font we use for options and story text
 		g.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT);//Clears the screen
 		g.setFont(q); //Sets the default font
 		
@@ -123,23 +124,29 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			g.setFont(n); //Sets the name font
 			scene.drawString(nameC,53,435); //Draws the current name
 			g.setFont(q);//sets the quote font 
-			if(!quoteC.contains("$")) //No line breaks
+			
+			fm = g.getFontMetrics();
+			
+			ArrayList<String> lines = new ArrayList<String>();
+			String line = "";
+			
+			for(int i = 0; i < quoteC.length(); i++)
 			{
-				scene.drawString(quoteC, 40, 520); //Draw the quote
-			}
-			else
-			{
-				String quoteCCopy = quoteC; // We use a quoteCCopy so we don't accidentally erase on each run loop
-				scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 525); //draw the first line
-				quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//erase the first line
-				int i = 1;//how many lines
-				while(quoteCCopy.contains("$")) //if there are more lines
+				line += quoteC.charAt(i);
+				if(fm.stringWidth(line) > 1180)
 				{
-					scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 525+65*i);//draw next line
-					quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//get rid of that line
-					i++;
+					String lineCopy = line;
+					line = line.substring(0, lineCopy.lastIndexOf(' '));
+					i -= lineCopy.length() - lineCopy.lastIndexOf(' ') - 1;
+					lines.add(line);
+					line = "";
 				}
-				scene.drawString(quoteCCopy, 40, 525+65*i);//draw last line
+			}
+			lines.add(line);
+			
+			for(int i = 0; i < lines.size(); i++)
+			{
+				scene.drawString(lines.get(i), 40, 535 + 65*i);
 			}
 		}
 		else if(state == 2)//Draws the options
