@@ -100,6 +100,9 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		Font q = new Font("Arial",Font.PLAIN,40);//Makes the font we use for options and story text
 		g.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT);//Clears the screen
 		g.setFont(q); //Sets the default font
+		
+		g.setColor(Color.white);
+		
 		if(state == 1)//Story text
 		{
 			drawTag(g);
@@ -129,6 +132,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		}
 		else if(state == 2)//Draws the options
 		{
+			scene.drawImage(bg, 0, 0, null);
 			scene.drawImage(obox, 0, 0, null);//options thing
 			scene.drawString(options.get(0), 220, 180);
 			scene.drawString(options.get(1), 220, 358);
