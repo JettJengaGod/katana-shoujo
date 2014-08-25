@@ -206,11 +206,12 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			{
 				//CHANGE THIS LINE 
 				int ch1x = 200,ch1y = 200,ch2x = 600,ch2y = 200; //Where they are idk how big they are and where they should go
-				tag = tag.substring(tag.indexOf("T"));//gets the rest of the string after the tag of where they are
-				String ch1 = tag.substring(1, 4);//gets the name of the first character file
+				String tagCopy = tag; // Need to make a copy because we still need to access the background component later
+				tagCopy = tagCopy.substring(tag.indexOf("T"));//gets the rest of the string after the tag of where they are
+				String ch1 = tagCopy.substring(1, 4);//gets the name of the first character file
 				System.out.println(ch1+"***");
 				c1 = ImageIO.read(new File(ch1+".png"));//reads in the first character image
-				String ch2 = tag.substring(4);//second char file
+				String ch2 = tagCopy.substring(4);//second char file
 				c2 = ImageIO.read(new File(ch2+".png"));//reads in
 				g.drawImage(c1,ch1x,ch1y,null);//draws c1
 				g.drawImage(c2,ch2x,ch2y,null);//draws c2
