@@ -31,6 +31,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	Image textBox;//Image that holds the text and the name.
 	Image obox;
 	Image bg;
+	Image oldbg; // For fading
 	Image c,c1,c2;
 	Image buffer; // For double buffering
 	Graphics bufferGraphics;
@@ -38,20 +39,22 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	String tag; //The tag that shows what the current line is
 	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote
 	long timer;
-	boolean screenShakeUpdate;
-	int screenShakeCounter;
+	boolean screenShakeUpdate = false;
+	int screenShakeCounter = 0;
 	int SCREENSHAKESTRENGTH = 10;
-	int SCREENSHAKETIMELIMIT = 60; // 1 second
+	int SCREENSHAKETIMELIMIT = 60; // ~1 second
 	int screenShakeX = 0;
 	int screenShakeY = 0;
+	boolean fadeUpdate = false;
+	float fadeCounter = 60f;
+	float FADETIMELIMIT = 32f; // ~0.5 second
+	boolean fadeTrack = true;
 	Random r;
 	
 	public void init()
 	{	
 		r = new Random();
 //		ap = new AudioPlayer();//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
-		screenShakeUpdate = false;
-		screenShakeCounter = 0;
 		timer = System.currentTimeMillis();
 		options.add("");
 		options.add("");
@@ -75,8 +78,6 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	
 	public void update (Graphics g) 
 	{
-		System.out.println("Update running");
-		
 		// initialize buffer 
 		if (buffer == null) 
 		{
@@ -84,7 +85,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			bufferGraphics = buffer.getGraphics (); 
 		}
 		
-		bufferGraphics.fillRect (0, 0, this.getSize().width, this.getSize().height); 
+		//bufferGraphics.fillRect (0, 0, this.getSize().width, this.getSize().height); 
 		paint (bufferGraphics); 
 	
 		// draw image on the screen 
@@ -113,16 +114,17 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			}
 			else
 			{
-				scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520); //draw the first line
-				quoteC = quoteC.substring(quoteC.indexOf('$')+1);//erase the first line
+				String quoteCCopy = quoteC; // We use a quoteCCopy so we don't accidentally erase on each run loop
+				scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 520); //draw the first line
+				quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//erase the first line
 				int i = 1;//how many lines
-				while(quoteC.contains("$")) //if there are more lines
+				while(quoteCCopy.contains("$")) //if there are more lines
 				{
-					scene.drawString(quoteC.substring(0,quoteC.indexOf('$')), 40, 520+50*i);//draw next line
-					quoteC = quoteC.substring(quoteC.indexOf('$')+1);//get rid of that line
+					scene.drawString(quoteCCopy.substring(0,quoteCCopy.indexOf('$')), 40, 520+50*i);//draw next line
+					quoteCCopy = quoteCCopy.substring(quoteCCopy.indexOf('$')+1);//get rid of that line
 					i++;
 				}
-				scene.drawString(quoteC, 40, 520+50*i);//draw last line
+				scene.drawString(quoteCCopy, 40, 520+50*i);//draw last line
 			}
 		}
 		else if(state == 2)//Draws the options
@@ -145,7 +147,44 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			System.out.println(b);
 			bg = ImageIO.read(new File(b+".png"));//reads in the background file
 			
-			g.drawImage(bg, screenShakeX, screenShakeY,null);//draws the background image
+			if(oldbg == null)
+			{
+				oldbg = bg;
+				g.drawImage(bg, screenShakeX, screenShakeY, null);
+			}
+			
+			else if(oldbg != bg && oldbg != null)
+			{
+				System.out.println(fadeCounter);
+				
+				if(fadeTrack)
+				{
+					fadeCounter = 0;
+					fadeTrack = false;
+				}
+				if(fadeCounter == FADETIMELIMIT)
+				{
+					oldbg = bg;
+					g.drawImage(bg, screenShakeX, screenShakeY,null);//draws the background image
+				}
+				else
+				{
+					g.drawImage(oldbg, screenShakeX, screenShakeY,null);//draws the background image
+					
+					float opacity = fadeCounter/FADETIMELIMIT;
+					if(opacity > 1.0f)
+						opacity = 1.0f;
+					((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+					((Graphics2D)g).drawImage(bg, screenShakeX, screenShakeY,null);//draws the background image
+					((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+				}
+			}
+			else
+				g.drawImage(bg, screenShakeX, screenShakeY,null);//draws the background image
+			
+			if(tag.contains("H"))
+				screenShakeUpdate = true;
+			
 			if(tag.contains("T"))//Two chars?
 			{
 				//CHANGE THIS LINE 
@@ -174,6 +213,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	}
 	public  void progress() //Function that goes to the next step in the story
 	{
+		System.out.println("Progress called");
 //		ap.play("/Resources/Music/Scrollsound.mp3"); //THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 		String name; //Name of the char 
 		String quote;//Current quote
@@ -331,7 +371,6 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		screenShakeUpdate = true;
 		// TODO Auto-generated method stub
 		if(state == 1)//we are in a story 
 		{
@@ -341,6 +380,15 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		{
 			choose(e.getX(),e.getY());//check where we are to see if it's an option
 		}
+		
+		if(fadeCounter < FADETIMELIMIT)
+		{
+			fadeCounter = FADETIMELIMIT;
+			oldbg = bg;
+		}
+		
+		fadeUpdate = true;
+		fadeCounter = 0;
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -393,9 +441,18 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 						screenShakeX = 0;
 						screenShakeY = 0;
 					}
-					System.out.println("screenshake");
-					repaint();
 				}
+				if(fadeUpdate)
+				{
+					fadeCounter++;
+					if(fadeCounter >= FADETIMELIMIT)
+					{
+						oldbg = bg;
+						fadeUpdate = false;
+					}
+				}
+				
+				repaint();
 			}
 		}
 	}
