@@ -5,6 +5,7 @@ import java.util.Random;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.applet.Applet;
 import java.awt.*;
@@ -36,7 +37,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	Image buffer; // For double buffering
 	Graphics bufferGraphics;
 	int points; //How many points your character is at.
-	String tag; //The tag that shows what the current line is
+	String tag = ""; //The tag that shows what the current line is
 	String quoteC = "", nameC = ""; //The lines we are currently displaying on the screen for the name and quote
 	long timer;
 	boolean screenShakeUpdate = false;
@@ -61,8 +62,10 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		options.add("");//These 3 lines are to populate options.
 		state=1;//The first line will always be a story panel so the state is 1.
 		try {
-			obox = ImageIO.read(new File("options.png"));
-			textBox =ImageIO.read(new File("Text Boxes.png"));//reads in the text boxes file.
+			URL url = getClass().getResource("options.png");
+			obox = ImageIO.read((url));
+			url = getClass().getResource("Text Boxes.png");
+			textBox =ImageIO.read(url);//reads in the text boxes file.
 			p = new parser("Introduction.txt");//reads in the story file.
 			progress();//the function that calls going through to the next line 
 		} catch (IOException e) {
@@ -71,7 +74,8 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		try {
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("sspr.ttf")));
+			URL url = getClass().getResource("sspr.ttf");
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, url.openStream()));
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -174,7 +178,8 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	{
 		try {
 			String b = tag.substring(tag.indexOf("B"), tag.indexOf("B")+2);//gets the file name of the background file
-			bg = ImageIO.read(new File(b+".png"));//reads in the background file
+			URL url = getClass().getResource(b + ".png");
+			bg = ImageIO.read(url);//reads in the background file
 			
 			if(oldbg == null)
 			{
@@ -214,18 +219,21 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 				String tagCopy = tag; // Need to make a copy because we still need to access the background component later
 				tagCopy = tagCopy.substring(tag.indexOf("T"));//gets the rest of the string after the tag of where they are
 				String ch1 = tagCopy.substring(1, 4);//gets the name of the first character file
-				c1 = ImageIO.read(new File(ch1+".png"));//reads in the first character image
+				url = getClass().getResource(ch1+".png");
+				c1 = ImageIO.read(url);//reads in the first character image
 				String ch2 = tagCopy.substring(4);//second char file
-				c2 = ImageIO.read(new File(ch2+".png"));//reads in
+				c2 = ImageIO.read(url);//reads in
 				g.drawImage(c1,ch1x,ch1y,null);//draws c1
 				g.drawImage(c2,ch2x,ch2y,null);//draws c2
+				url = getClass().getResource(ch2+".png");
 			}
 			else//only one char
 			{
 				//CHANGE THIS LINE
 				int cx = 400, cy = 200;// location of the char 
 				String ch = tag.substring(tag.indexOf('C'));//gets name of char
-				c = ImageIO.read(new File(ch+".png"));//reads in
+				url = getClass().getResource(ch+".png");
+				c = ImageIO.read(url);//reads in
 				g.drawImage(c,cx,cy,null);//draws c
 			}
 		} catch (IOException e) {
@@ -248,7 +256,8 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 			{
 				oldbg = bg;
 				try {
-					bg = ImageIO.read(new File("b0.png"));
+					URL url = getClass().getResource("B0.png");
+					bg = ImageIO.read(url);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

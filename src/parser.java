@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 public class parser 
 {
@@ -12,7 +13,8 @@ public class parser
 	}
 	public void readStuff() throws IOException //reads in the file to all 
 	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path))); // make a reader to read the file
+		URL url = getClass().getResource(path);
+		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream())); // make a reader to read the file
 		try 
 		{
 		    String line; //the current line
