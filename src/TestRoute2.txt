@@ -1,0 +1,17 @@
+SP0B0C0<This is a Test Document>
+SP0B0C1<John&Hello World!>
+OP-1P0<This is option 1><This is option 2>*
+SP0B0C1<John&Sounds good, off we go!>
+SP0B0C1<John&Insert filler here>
+SP0B0C1<Onto Option 2>
+OP-1p0p1<This is option 1><This is option 2><This is option 3>*
+SP0B0C1<You chose Option 3>
+SP1B0C1<You chose Option 2>
+SP2B0C1<You chose Option 1>
+SP-1B0C1<John&Onto this route>
+SP-1B0C1<John&We're going, we're going>
+SP-1B0C1<John&We are at Option 2>
+OP1P0p-1<This is Option 1><This is Option 2><This is Option 3>*
+SP-1B0C1<You chose Option 1>
+SP-2B0C1<You chose option 3>
+SP0B0C1<You chose option 2>
