@@ -17,9 +17,13 @@ import javax.swing.*;
 /*This is the shitty file that I chose to do fucking everything in cause I'm too lazy to seprate it out and I wanted to use shitty globals.
  * Enjoy.
  */
-public class shit extends Applet implements KeyListener, MouseListener, Runnable
+public class shit extends Frame implements KeyListener, MouseListener, Runnable, WindowListener
 {
 
+    public static void main(String[] args) {
+	new shit();
+    }
+    
     //Globals
     int state; //What type of thing we are at in the game. 1 is story panel 2 is options 3 is end
     public  int SCREENWIDTH = 1280;// Screen width
@@ -52,8 +56,31 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
     Random r;
     FontMetrics fm;
 
-    public void init()
-    {	
+    public void windowClosing(WindowEvent e)
+    {
+	dispose();
+	System.exit(0);
+    }
+    public void windowOpened(WindowEvent e)
+    { }
+    public void windowIconified(WindowEvent e)
+    { }
+    public void windowClosed(WindowEvent e)
+    { }
+    public void windowDeiconified(WindowEvent e)
+    { }
+    public void windowActivated(WindowEvent e)
+    { }
+    public void windowDeactivated(WindowEvent e)
+    { }
+
+    public shit()
+    {
+	this.addWindowListener(this);
+	setSize(1280,720);
+	setVisible(true);
+
+	
 	r = new Random();
 	//		ap = new AudioPlayer();//THIS SHIT DOESN'T WORK WHAT THE FUCK DEHOWE
 	timer = System.currentTimeMillis();
@@ -85,7 +112,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 	resize(SCREENWIDTH,SCREENHEIGHT); //Makes the applet the size we want it
 	addMouseListener(this); //Lets us use mouse
 	addKeyListener(this); //Lets us use keyboard
-		
+
 	Thread t = new Thread(this);
 	t.start();
     }
@@ -174,6 +201,7 @@ public class shit extends Applet implements KeyListener, MouseListener, Runnable
 		scene.drawString("The end", 40, 520); //End screen
 	    }
     }
+
     public void drawTag(Graphics g)
     {
 	try {
